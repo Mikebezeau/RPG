@@ -1,0 +1,14 @@
+.heading {
+	margin: 0 auto; /* zeroing the margin of the last element in the #header div will avoid margin collapse - an unexplainable space between divs. If the div has a border around it, this is not necessary as that also avoids the margin collapse */
+	padding-top: 30px; /* using padding instead of margin will allow you to keep the element away from the edges of the div */
+	font-size: 28px;
+	font-weight: bolder;
+	font-family: 'Palatino Linotype', arial, serif;
+}
+h5 {
+	margin: 10px 0;
+	font: 100% Verdana,Arial,Helvetica,sans-serif;
+}
+h4 {
+	font: 120% Verdana,Arial,Helvetica,sans-serif;
+}

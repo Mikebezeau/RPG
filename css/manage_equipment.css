@@ -1,0 +1,49 @@
+body{
+	background-color:#fff;
+	letter-spacing:normal;
+	font-size:16px;
+}
+
+input{
+	font-size:16px;
+	text-transform:none;
+	padding:0 10px;
+}
+
+#maincontent table{
+	width:800px;
+	margin:0 auto;
+}
+#maincontent input{
+}
+.input_name{
+	width:140px;
+	border: 1px solid;
+	margin-right: 5px;
+	background-color:transparent;
+}
+.input_number{
+	width:20px;
+	border: 1px solid;
+	margin-right: 5px;
+	background-color:transparent;
+}
+.input_range{
+	width:30px;
+	border: 1px solid;
+	margin-right: 5px;
+	background-color:transparent;
+}
+.input_desc{
+	width:500px;
+	border: 1px solid;
+	margin-right: 5px;
+	background-color:transparent;
+}
+.bold{
+	font-weight:bold;
+}
+.edit-effect{
+	cursor:pointer;
+	background-color:#000;
+}

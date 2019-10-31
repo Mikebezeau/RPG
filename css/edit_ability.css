@@ -1,0 +1,8 @@
+.center_text {
+	text-align:center;
+}
+/* heading, small font no borders */
+.small {
+	font-family:"Courier New", Courier, monospace;
+	font-size:70%;
+	}

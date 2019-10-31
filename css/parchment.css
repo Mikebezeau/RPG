@@ -1,0 +1,54 @@
+div#dropdown_bar li{
+	background-color:#DDD;
+}
+div#dropdown_bar li:hover{
+	background-color:#FFF;
+}
+#container {
+	text-align: left; /* this overrides the text-align: center on the body element. */
+	background-color: #DFDFDF;
+	background-image:url(../images/bg/papertile.jpg);
+	background-repeat:repeat;
+	width: 880px;
+	border-color: #CCB;
+	margin:0 auto;
+}
+#maincontent {
+	margin-right:auto;
+	margin-left:auto;
+	margin-bottom:0;	
+	padding:10px;
+	width: 860px;
+}
+#header {
+	text-align:center;
+	background-color:transparent;
+    height: auto;	
+}
+#header img {
+	display:block;
+	margin:auto;
+	margin-top:20px;
+}
+/*
+#main_nav  {
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top:20px;
+}
+*/
+#header_hr {
+	width: 80%;
+	color:#999;
+	background-color:#999;
+	margin-bottom:0;
+}
+p.page {
+	page-break-after: always;
+}
+/* heading, small font no borders */
+.small {
+	font-family:"Courier New", Courier, monospace;
+	font-size:70%;
+}

@@ -1,0 +1,148 @@
+body {
+	width: 100%;
+}
+#maincontent {
+	font-size:80%;
+}
+/*
+#info {
+	width:520px;
+}*/
+input {
+	width:38px;
+	border: none;
+	padding: 0;
+	background-color:transparent;
+	font: 8pt Verdana,Arial,Helvetica,sans-serif;
+	}
+input.text {
+	width:160px;
+	height:19px;
+	font-size: 90%;
+	border: 1px dotted #333;
+	background-color:#EEE;
+	}
+input.submit {
+	}
+input.submit_right {
+	width:150px;
+	float:right;
+	border: 1px solid #333;
+	background-color:ivory;
+	}
+table {
+	table-layout:fixed;
+	margin: 0 0 10px 0;
+	border: none;
+	}
+tr.info {
+	background-color: #EEE;
+	padding-right: 7px;
+	border: 1px dotted #333;
+}
+td {
+	width:38px;
+}
+/* title cell, black background */
+.heading {
+	font-weight:bold;
+	height:20px;
+	background-color:#333;
+	color:white;
+	border:none;
+	padding:none;
+	}
+/* title cell, black background fixed width */
+td.title {
+	font-weight:bold;
+	width:100px;
+	background-color:#333;
+	color:white;
+	border:none;
+	}
+/* heading, small font no borders */
+.small {
+	font-family:"Courier New", Courier, monospace;
+	font-size:70%;
+	}
+/* cell with thick black border */
+.main {
+	border: 2px solid #333;
+	background-color: #DDD;
+	}
+/* cell with black border */
+.solid {
+	border: 1px solid #333;
+	background-color: #DDD;
+	}
+	
+.dotted {
+	border: 1px dotted #333;
+	background-color:#DDD;
+	}
+.input {
+	border: 1px dotted #333;
+	background-color: #EEE;
+}
+#info {
+	float:left;
+	width:400px;	
+}
+#info #languages {
+	width:200px;
+}
+/* title cell, black background fixed width */
+.skill_title {
+	font-family:"Courier New", Courier, monospace;
+	font-size:80%;;
+	width:120px;
+	background-color:#333;
+	color:white;
+	border:none;
+	}
+	
+/* cell with black border */
+.skill_main{
+	border: 2px solid #333;
+	width:20px;
+	background-color: #DDD;
+	}
+/* secondary cell with grey background */
+.skill_grey {
+	background-color:#DDD;
+	border: 1px dotted #333;
+	width:20px;
+	}
+.skill_input {
+	background-color:#EEE;
+	border: 1px dotted #333;
+	width:20px;
+}
+.ability {
+	width: 160px;
+	border: 1px solid silver;
+	background-color:#DDD;
+}
+.blank {
+	background-color:transparent;
+	border: none;
+}
+.spell_list {
+	border: 1px solid silver;
+	background-color:#DDD;
+	padding:5px;
+	margin-bottom:15px;
+}
+.spell_level_list {
+	background-color:#DDD;
+	width:200px;
+	float:left;
+	padding:10px 0;
+}
+.inline-block {
+	display:inline-block;
+	padding:3px;
+}
+.inline-block p {
+	padding-left:5px;
+}

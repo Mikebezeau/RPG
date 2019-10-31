@@ -1,0 +1,49 @@
+hr {
+	color:#999;
+	background-color:#999;
+	border:none;
+	height:1px;
+}
+a  {
+	color: #000;
+	text-decoration:none;
+}
+a:hover {
+	color: #333;
+}
+.center_text {
+	text-align:center;
+}
+.center_feat_list {
+	margin:0 auto;
+	/*190px x 4 columns*/
+	width:840px;
+}
+.feat_button {
+	margin: 10px 5px;
+}
+.spell_level_list {
+	width:190px;
+	float:left;
+	padding:10px 10px;
+}
+/*keeps contents of amin list item div contained within the div*/
+/*spells deisplayed in a vertical list*/
+.spell_list_item {
+	width:190px;
+	overflow:hidden;
+	padding-bottom: 5px;
+}
+/*feats deisplayed in a horizontal list*/
+.feat_list_item {
+	float:left;
+	width:190px;
+	overflow:hidden;
+	padding-bottom:5px;
+	padding-right:20px;
+}
+/*put list item name to right of checkbox*/
+.item_name {
+	width:160px;
+	float:right;
+}

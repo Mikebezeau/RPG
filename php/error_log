@@ -1,0 +1,315 @@
+[30-Oct-2019 14:37:23 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[30-Oct-2019 14:37:23 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[30-Oct-2019 14:37:23 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[30-Oct-2019 14:37:23 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[30-Oct-2019 14:37:23 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[30-Oct-2019 14:37:23 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[30-Oct-2019 14:37:23 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[30-Oct-2019 14:37:23 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[30-Oct-2019 14:37:23 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[30-Oct-2019 14:37:23 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Trying to get property 'FileName' of non-object in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 378
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Warning:  Use of undefined constant character_index - assumed 'character_index' (this will throw an Error in a future version of PHP) in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 223
+[30-Oct-2019 14:37:28 UTC] PHP Warning:  Use of undefined constant character_stats - assumed 'character_stats' (this will throw an Error in a future version of PHP) in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 224
+[30-Oct-2019 14:37:28 UTC] PHP Warning:  Use of undefined constant bab - assumed 'bab' (this will throw an Error in a future version of PHP) in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 224
+[30-Oct-2019 14:37:28 UTC] PHP Warning:  A non-numeric value encountered in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 224
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 84
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Quantity in /home/mikebeze/public_html/rpg/php/load_items.php on line 85
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 84
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Quantity in /home/mikebeze/public_html/rpg/php/load_items.php on line 85
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 84
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Quantity in /home/mikebeze/public_html/rpg/php/load_items.php on line 85
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 84
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$Quantity in /home/mikebeze/public_html/rpg/php/load_items.php on line 85
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Trying to get property 'BonusPoints' of non-object in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 526
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined variable: acbonus in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 887
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined variable: shieldacbonus in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 887
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined variable: acbonus in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 889
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined variable: shieldacbonus in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 889
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined variable: skillpenalty in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 893
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined variable: shieldskillpenalty in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 893
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined variable: maxdex in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 897
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined variable: spellfail in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 899
+[30-Oct-2019 14:37:28 UTC] PHP Notice:  Undefined variable: shieldspellfail in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 899
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Undefined variable: test in /home/mikebeze/public_html/rpg/php/character_ability_data_load_json.php on line 235
+[30-Oct-2019 14:37:29 UTC] PHP Notice:  Trying to get property 'player_character_id' of non-object in /home/mikebeze/public_html/rpg/php/map_load.php on line 4
+[30-Oct-2019 14:37:32 UTC] PHP Notice:  Trying to get property 'FileName' of non-object in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 378
+[30-Oct-2019 14:37:33 UTC] PHP Notice:  Trying to get property 'FileName' of non-object in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 378
+[30-Oct-2019 14:37:34 UTC] PHP Notice:  Trying to get property 'FileName' of non-object in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 378
+[30-Oct-2019 14:37:34 UTC] PHP Notice:  Trying to get property 'FileName' of non-object in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 378
+[30-Oct-2019 14:37:34 UTC] PHP Notice:  Trying to get property 'FileName' of non-object in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 378
+[30-Oct-2019 14:37:34 UTC] PHP Notice:  Trying to get property 'FileName' of non-object in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 378
+[30-Oct-2019 14:37:35 UTC] PHP Notice:  Trying to get property 'FileName' of non-object in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 378
+[30-Oct-2019 14:37:39 UTC] PHP Notice:  Undefined property: stdClass::$off_hand in /home/mikebeze/public_html/rpg/php/save_game.php on line 54
+[30-Oct-2019 14:37:39 UTC] PHP Notice:  Array to string conversion in /home/mikebeze/public_html/rpg/php/save_game.php on line 90
+[30-Oct-2019 14:37:43 UTC] PHP Notice:  Undefined property: stdClass::$off_hand in /home/mikebeze/public_html/rpg/php/save_game.php on line 54
+[30-Oct-2019 14:37:43 UTC] PHP Notice:  Array to string conversion in /home/mikebeze/public_html/rpg/php/save_game.php on line 90
+[31-Oct-2019 15:48:24 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[31-Oct-2019 15:48:24 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[31-Oct-2019 15:48:24 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[31-Oct-2019 15:48:24 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[31-Oct-2019 15:48:24 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[31-Oct-2019 15:48:24 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[31-Oct-2019 15:48:24 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[31-Oct-2019 15:48:24 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[31-Oct-2019 15:48:24 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[31-Oct-2019 15:48:24 UTC] PHP Notice:  Undefined property: stdClass::$PartyID in /home/mikebeze/public_html/rpg/php/load_adventure_and_pc_selection.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 21
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$OffHand in /home/mikebeze/public_html/rpg/php/load_items.php on line 23
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 65
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 84
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Quantity in /home/mikebeze/public_html/rpg/php/load_items.php on line 85
+[31-Oct-2019 15:48:26 UTC] PHP Warning:  Use of undefined constant character_index - assumed 'character_index' (this will throw an Error in a future version of PHP) in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 223
+[31-Oct-2019 15:48:26 UTC] PHP Warning:  Use of undefined constant character_stats - assumed 'character_stats' (this will throw an Error in a future version of PHP) in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 224
+[31-Oct-2019 15:48:26 UTC] PHP Warning:  Use of undefined constant bab - assumed 'bab' (this will throw an Error in a future version of PHP) in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 224
+[31-Oct-2019 15:48:26 UTC] PHP Warning:  A non-numeric value encountered in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 224
+[31-Oct-2019 15:48:26 UTC] PHP Warning:  Use of undefined constant character_index - assumed 'character_index' (this will throw an Error in a future version of PHP) in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 223
+[31-Oct-2019 15:48:26 UTC] PHP Warning:  Use of undefined constant character_stats - assumed 'character_stats' (this will throw an Error in a future version of PHP) in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 224
+[31-Oct-2019 15:48:26 UTC] PHP Warning:  Use of undefined constant bab - assumed 'bab' (this will throw an Error in a future version of PHP) in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 224
+[31-Oct-2019 15:48:26 UTC] PHP Warning:  A non-numeric value encountered in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 224
+[31-Oct-2019 15:48:26 UTC] PHP Warning:  Use of undefined constant character_index - assumed 'character_index' (this will throw an Error in a future version of PHP) in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 223
+[31-Oct-2019 15:48:26 UTC] PHP Warning:  Use of undefined constant character_stats - assumed 'character_stats' (this will throw an Error in a future version of PHP) in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 224
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Warning:  Use of undefined constant bab - assumed 'bab' (this will throw an Error in a future version of PHP) in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 224
+[31-Oct-2019 15:48:26 UTC] PHP Warning:  A non-numeric value encountered in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 224
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 84
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Quantity in /home/mikebeze/public_html/rpg/php/load_items.php on line 85
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 84
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Quantity in /home/mikebeze/public_html/rpg/php/load_items.php on line 85
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Equipped in /home/mikebeze/public_html/rpg/php/load_items.php on line 84
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$Quantity in /home/mikebeze/public_html/rpg/php/load_items.php on line 85
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$EffectsEquipmentID in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 71
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined property: stdClass::$IsDurationCountdownOnCharacterTurn in /home/mikebeze/public_html/rpg/php/character_ability_effect_query_funciton.php on line 77
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined variable: acbonus in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 887
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined variable: shieldacbonus in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 887
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined variable: acbonus in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 889
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined variable: shieldacbonus in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 889
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined variable: skillpenalty in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 893
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined variable: shieldskillpenalty in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 893
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined variable: maxdex in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 897
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined variable: spellfail in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 899
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined variable: shieldspellfail in /home/mikebeze/public_html/rpg/includes/inc_character_query_full.php on line 899
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined offset: 0 in /home/mikebeze/public_html/rpg/php/character_ability_data_load_json.php on line 129
+[31-Oct-2019 15:48:26 UTC] PHP Notice:  Undefined variable: test in /home/mikebeze/public_html/rpg/php/character_ability_data_load_json.php on line 235
+[31-Oct-2019 15:48:27 UTC] PHP Notice:  Trying to get property 'player_character_id' of non-object in /home/mikebeze/public_html/rpg/php/map_load.php on line 4
+[31-Oct-2019 15:48:29 UTC] PHP Notice:  Trying to get property 'FileName' of non-object in /home/mikebeze/public_html/rpg/classes/Quick_Stat.php on line 378
