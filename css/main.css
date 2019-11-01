@@ -1,5 +1,17 @@
 @charset "utf-8";
 
+@font-face{
+	font-family:beebregular;
+	src: url('../fonts/beeb-webfont.ttf');
+    src: url('../fonts/beeb-webfont.woff');
+    src: url('../fonts/beeb-webfont.woff2');
+}
+	
+@font-face{
+	font-family:exocetheavy;
+    src: url('../fonts/exocet1-webfont.woff2');
+}
+	
 /* mobile - do not allow options to appear when user pressing/holding image */
 * {
 	-webkit-touch-callout: none;
