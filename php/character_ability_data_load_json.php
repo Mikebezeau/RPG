@@ -124,10 +124,10 @@ if($catagory_id == 1) {
 	
 	//SPELLS
 	//if character has spells
-	if(isset($arr_spell_name))
+	if(isset($arr_spell_name[0]))
 	{
-		if($arr_spell_name[0] != '')
-		{
+		//if($arr_spell_name[0] != '')
+		//{
 			//foreach class
 			foreach ($arr_classid as $class_counter => $value)
 			{
@@ -208,7 +208,7 @@ if($catagory_id == 1) {
 					
 				} //end if class_magic != None
 			} //end foreach classid
-		} //end if($arr_spell_name[0] != '')
+		//} //end if($arr_spell_name[0] != '')
 	} //end if isset($arr_spell_name)
 
 } //end if PLAYER character
@@ -232,7 +232,7 @@ else
 
 	
 echo json_encode(array(
-	'test'=>$test,
+	//'test'=>$test,
 	'party_stats_index'=>$party_stats_index,
 	'racial'=>$racial, 
 	'class'=>$class,

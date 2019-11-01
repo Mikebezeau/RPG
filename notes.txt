@@ -1,0 +1,5 @@
+player_character_id == 0 means no player specified, sometimes use -1? should use NULL?
+
+character thumbnail picture ID should be used to get image directly (image named using ID) instead of using DB table for filename
+Or not if players are going to upload their own?
+

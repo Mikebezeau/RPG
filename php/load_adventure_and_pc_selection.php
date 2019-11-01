@@ -62,7 +62,7 @@
 			}
 			*/
 			
-			$pcs[$pcCount]['party_id'] = $row->PartyID;
+			$pcs[$pcCount]['party_id'] = isset($row->PartyID)?$row->PartyID:0;
 			
 			$select_box .= '<option value="'.$row->CharacterID.'" data-character-id="'.$pcs[$pcCount]['character_id'].'">'.$row->CharacterName.'</option>';
 			

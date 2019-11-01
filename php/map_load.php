@@ -1,7 +1,7 @@
 <?php
 $AreaID = $_POST['id'];
 $post_data = json_decode($_POST['data'], false);
-$player_character_id = $post_data->player_character_id;
+$player_character_id = isset($post_data->player_character_id)?$post_data->player_character_id:0;//player_character_id == 0 means no player specified
 
 // database connect function
 include_once("../includes/inc_connect.php"); 

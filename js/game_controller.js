@@ -2139,12 +2139,12 @@ GameController.LoadLevelCallback = function(data)
 		//has this characters quick_stats already been loaded by previous monster load
 		var quickstat_character_stats_index = CharacterController.get_quickstat_character_stats_index(load_monster[i].quick_stat_id)
 		
-		console.log('quickstat_character_stats_index: '+quickstat_character_stats_index);
+		//console.log('quickstat_character_stats_index: '+quickstat_character_stats_index);
 		
 		if(quickstat_character_stats_index == -1)
 		{
 		    
-		    alert('loading character: '+{'player_character_id':game.player.character_id});
+		    //alert('loading character: '+{'player_character_id':game.player.character_id});
 			
 			//load full data non-asynchronously so that has a chance to load before loading next character 
 			ajax_action('load_character_data.php',load_monster[i].character_id,{'player_character_id':game.player.character_id},CharacterController.LoadCharacterCallback, false);

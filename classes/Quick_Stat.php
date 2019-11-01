@@ -220,8 +220,8 @@
 					$row->action_type = 'attack';
 					$row->target = 1; //1 == select 1 target
 					$row->data_index = -1;
-					$row->party_stats_index = character_index;
-					$row->num_attacks = 1 + ((character_stats.bab-1)%5);
+					$row->party_stats_index = 0; //is set when loading party members? default is 0
+					$row->num_attacks = 1 + ($this->bab - 1)%5;
 					$row->submit = 'm'; //first letter of submit name - s for single and m for multiple attack
 					$row->attack_name = $row->WeaponName;
 					$row->weapon_type_id = (int)$row->WeaponTypeID;
@@ -374,8 +374,10 @@
 				if($this->character_id > 0)
 				{
 					$result = mysqli_query($link,"SELECT FileName FROM ThumbPics WHERE ThumbPicID = ".$this->thumb_pic_id);
-					$row = mysqli_fetch_object($result);
-					$this->thumb_pic_file = $row->FileName;
+					if($row = mysqli_fetch_object($result))
+					{
+						$this->thumb_pic_file = $row->FileName;//this should be upgraded
+					}
 				}
 				
 				if($this->full_pic_id > 0)

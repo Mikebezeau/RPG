@@ -1,5 +1,6 @@
 <?php
 
+//set function if does not exist or will cause error in level editor
 if(!function_exists('EffectQuery'))
 {
 	function EffectQuery($link, $effectTypeTable, $effectTypeFieldID, $effectTypeID)
@@ -66,6 +67,17 @@ if ($result = mysqli_query($link,$query)) {
 	$sr = $row->SpellResist;
 	$asp_bonus = $row->ASPbonus;
 	$dsp_bonus = $row->DSPbonus;
+	
+	//set default values for armor and shield
+	$acbonus = 0;
+	$maxdex = 10;
+	$skillpenalty = 0;
+	$spellfail = 0;
+	$shieldacbonus = 0;
+	$shieldmaxdex = 10;
+	$shieldskillpenalty = 0;
+	$shieldspellfail = 0;
+	
 }
 
 //\\//\\//\\//\\//
@@ -819,12 +831,7 @@ if(isset($character_sheet_display) && $character_sheet_display == 1)
 		ON Armor.ArmorID = CharacterArmor.ArmorID
 		WHERE CharacterArmor.CharacterID = '.$character_id.' AND CharacterArmor.Equipped = TRUE
 		AND Armor.Shield = FALSE';
-		
-	$acbonus = 0;
-	$maxdex = 10;
-	$skillpenalty = 0;
-	$spellfail = 0;
-		
+	
 	// Perform CharacterArmor Query
 	if($result = mysqli_query($link,$query)) {
 		
@@ -852,11 +859,6 @@ if(isset($character_sheet_display) && $character_sheet_display == 1)
 		ON Armor.ArmorID = CharacterArmor.ArmorID
 		WHERE CharacterArmor.CharacterID = '.$character_id.' AND CharacterArmor.Equipped = TRUE
 		AND Armor.Shield = TRUE';
-		
-	$shieldacbonus = 0;
-	$shieldmaxdex = 10;
-	$shieldskillpenalty = 0;
-	$shieldspellfail = 0;
 
 	// Perform CharacterArmor / Shield Query
 	if($result = mysqli_query($link,$query)) {

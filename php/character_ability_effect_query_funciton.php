@@ -68,13 +68,13 @@ function EffectQuery($link, $effectTypeTable, $effectTypeFieldID, $effectTypeID,
 			$effectData->EffectModTypeID = (int)$effectData->EffectModTypeID;
 			$effectData->EffectMovementRate = (int)$effectData->EffectMovementRate;
 			$effectData->EffectMovementType = (int)$effectData->EffectMovementType;
-			$effectData->EffectsEquipmentID = (int)$effectData->EffectsEquipmentID;
+			$effectData->EffectsEquipmentID = NULL;//(int)$effectData->EffectsEquipmentID;
 			$effectData->G_max = (int)$effectData->G_max;
 			$effectData->G_min = (int)$effectData->G_min;
 			$effectData->HitType = (int)$effectData->HitType;
 			$effectData->IsAllowSR = (int)$effectData->IsAllowSR;
 			$effectData->IsAllowSave = (int)$effectData->IsAllowSave;
-			$effectData->IsDurationCountdownOnCharacterTurn = (int)$effectData->IsDurationCountdownOnCharacterTurn;
+			$effectData->IsDurationCountdownOnCharacterTurn = 1;//(int)$effectData->IsDurationCountdownOnCharacterTurn;
 			$effectData->IsHarmless = (int)$effectData->IsHarmless;
 			//$effectData->ItemID = (int)$effectData->ItemID;//ONLY USED FOR JOIN
 			$effectData->MaintainEveryRound = (int)$effectData->MaintainEveryRound;

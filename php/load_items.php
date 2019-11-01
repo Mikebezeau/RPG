@@ -18,9 +18,9 @@
 			$row->ID = $row->WeaponID;
 			$row->Name = $row->WeaponName;
 			$row->Description = $row->Description;
-			$row->Equipped = (int)$row->Equipped;
+			$row->Equipped = isset($row->Equipped)?(int)$row->Equipped:0;
 			$row->TwoHand = (int)$row->TwoHand;
-			$row->OffHand = (int)$row->OffHand;
+			$row->OffHand = isset($row->OffHand)?(int)$row->OffHand:0;
 			
 			//include all data for ActionController.SetCharacterActionData
 			//for PCs, equipped weapons in 'character_stats.WeaponArr' are added directly to 'action_data.attack_action_data'
@@ -62,7 +62,7 @@
 			$row->ID = $row->ArmorID;
 			$row->Name = $row->ArmorName;
 			$row->Description = $row->Description;
-			$row->Equipped = (int)$row->Equipped;
+			$row->Equipped = 0;//(int)$row->Equipped;//default is 0 for not equipped
 			$row->Shield = (int)$row->Shield;
 			//query for armor effect
 			$row->effects = EffectQuery($link, 'EffectsArmor', 'ItemID', $row->ID);
@@ -81,8 +81,8 @@
 			$row->Name = $row->EquipName;
 			$row->Description = $row->Description;
 			$row->Icon = $row->Icon;
-			$row->Equipped = (int)$row->Equipped;
-			$row->Quantity = (int)$row->Quantity;
+			$row->Equipped = 0;//(int)$row->Equipped;//default is 0 for not equipped
+			$row->Quantity = 0;//(int)$row->Quantity;//default is 0
 			$row->Magical = (int)$row->Magical;
 			//query for equipment effect
 			$row->effects = EffectQuery($link, 'EffectsEquipment', 'ItemID', $row->ID);

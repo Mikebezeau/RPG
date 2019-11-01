@@ -1781,7 +1781,7 @@ CharacterController.LoadCharacterCallback = function(data)
 	var character_stats = $.parseJSON(data);
 	var character_id = character_stats.character_id;
 	
-	console.log(character_stats);
+	//console.log(character_stats);
 	
 	//if character found in DB
 	if(character_id > 0)
