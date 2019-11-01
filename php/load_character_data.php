@@ -10,7 +10,7 @@
 	
 	$character_id= $_POST['id'];
 	$data = json_decode($_POST['data']);
-	$player_character_id= $data->player_character_id;
+	$player_character_id= isset($data->player_character_id)?$data->player_character_id:-1;
 	
 	$character_stats = new Quick_Stat();
 	//for NPC and monsters

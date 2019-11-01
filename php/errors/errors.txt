@@ -2597,3 +2597,36 @@ error: Uncaught TypeError: Cannot read property 'direction' of undefined  at lin
 2019-11-01 19:24:16  -  Browser: Chrome   -  Mobile: No
 User Agent: undefinedBrowser CodeName: Mozilla / Browser Name: Netscape / Browser Version: 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36 / Cookies Enabled: true / Browser Language: en-US / Browser Online: true / Platform: Win32 / User-agent header: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36
 error: Uncaught TypeError: Cannot read property 'character_stats' of undefined  at linenumber: 1606 of file: http://localhost/rpg/js/game_controller.js?v12
+2019-11-01 20:49:03  -  Browser: Chrome   -  Mobile: No
+User Agent: undefinedBrowser CodeName: Mozilla / Browser Name: Netscape / Browser Version: 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36 / Cookies Enabled: true / Browser Language: en-US / Browser Online: true / Platform: Win32 / User-agent header: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+error: Uncaught TypeError: Cannot read property 'character_stats' of undefined  at linenumber: 1606 of file: http://localhost/rpg/js/game_controller.js?v12
+2019-11-01 20:55:54  -  Browser: Chrome   -  Mobile: No
+User Agent: undefinedBrowser CodeName: Mozilla / Browser Name: Netscape / Browser Version: 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36 / Cookies Enabled: true / Browser Language: en-US / Browser Online: true / Platform: Win32 / User-agent header: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+error: Script error.  at linenumber: 0 of file: 
+2019-11-01 20:56:47  -  Browser: Chrome   -  Mobile: No
+User Agent: undefinedBrowser CodeName: Mozilla / Browser Name: Netscape / Browser Version: 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36 / Cookies Enabled: true / Browser Language: en-US / Browser Online: true / Platform: Win32 / User-agent header: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+error: Script error.  at linenumber: 0 of file: 
+2019-11-01 21:25:41  -  Browser: Chrome   -  Mobile: No
+User Agent: undefinedBrowser CodeName: Mozilla / Browser Name: Netscape / Browser Version: 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36 / Cookies Enabled: true / Browser Language: en-US / Browser Online: true / Platform: Win32 / User-agent header: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+error: Script error.  at linenumber: 0 of file: 
+2019-11-01 21:28:34  -  Browser: Chrome   -  Mobile: No
+User Agent: undefinedBrowser CodeName: Mozilla / Browser Name: Netscape / Browser Version: 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36 / Cookies Enabled: true / Browser Language: en-US / Browser Online: true / Platform: Win32 / User-agent header: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+error: Script error.  at linenumber: 0 of file: 
+2019-11-01 21:30:17  -  Browser: Chrome   -  Mobile: No
+User Agent: undefinedBrowser CodeName: Mozilla / Browser Name: Netscape / Browser Version: 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36 / Cookies Enabled: true / Browser Language: en-US / Browser Online: true / Platform: Win32 / User-agent header: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+error: Script error.  at linenumber: 0 of file: 
+2019-11-01 21:33:42  -  Browser: Chrome   -  Mobile: No
+User Agent: undefinedBrowser CodeName: Mozilla / Browser Name: Netscape / Browser Version: 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36 / Cookies Enabled: true / Browser Language: en-US / Browser Online: true / Platform: Win32 / User-agent header: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+error: Script error.  at linenumber: 0 of file: 
+2019-11-01 21:35:32  -  Browser: Chrome   -  Mobile: No
+User Agent: undefinedBrowser CodeName: Mozilla / Browser Name: Netscape / Browser Version: 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36 / Cookies Enabled: true / Browser Language: en-US / Browser Online: true / Platform: Win32 / User-agent header: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+error: Script error.  at linenumber: 0 of file: 
+2019-11-01 21:36:40  -  Browser: Chrome   -  Mobile: No
+User Agent: undefinedBrowser CodeName: Mozilla / Browser Name: Netscape / Browser Version: 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36 / Cookies Enabled: true / Browser Language: en-US / Browser Online: true / Platform: Win32 / User-agent header: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+error: Script error.  at linenumber: 0 of file: 
+2019-11-01 21:37:43  -  Browser: Chrome   -  Mobile: No
+User Agent: undefinedBrowser CodeName: Mozilla / Browser Name: Netscape / Browser Version: 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36 / Cookies Enabled: true / Browser Language: en-US / Browser Online: true / Platform: Win32 / User-agent header: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+error: Script error.  at linenumber: 0 of file: 
+2019-11-01 21:39:50  -  Browser: Chrome   -  Mobile: No
+User Agent: undefinedBrowser CodeName: Mozilla / Browser Name: Netscape / Browser Version: 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36 / Cookies Enabled: true / Browser Language: en-US / Browser Online: true / Platform: Win32 / User-agent header: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+error: Script error.  at linenumber: 0 of file: 

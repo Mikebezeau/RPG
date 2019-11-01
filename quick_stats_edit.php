@@ -211,6 +211,7 @@ else
 		<?php
 		$query = "SELECT * FROM CreatureTypes";
 		$result = mysqli_query($link, $query);
+		$html = "";
 		while($row = mysqli_fetch_object($result))
 		{
 			$html .= '<option value="'.$row->CreatureTypeID.'" '.($row->CreatureTypeID == $quick_stats->CreatureTypeID?'selected="selected"':'').'>'.$row->TypeName.'</option>';
@@ -221,6 +222,7 @@ else
 		?>
 		
 		<?php
+		//set creature sub-type select boxes
 		$query = "SELECT * FROM CreatureSubTypes";
 		for($i=0; $i<2; $i++)
 		{
@@ -228,6 +230,7 @@ else
 			$result = mysqli_query($link, $query);
 			while($row = mysqli_fetch_object($result))
 			{
+				$quick_stats->CreatureSubTypeID[$i] = isset($quick_stats->CreatureSubTypeID[$i])?$quick_stats->CreatureSubTypeID[$i]:0;
 				$html .= '<option value="'.$row->CreatureSubTypeID.'" '.($row->CreatureSubTypeID == $quick_stats->CreatureSubTypeID[$i]?'selected="selected"':'').'>'.$row->TypeName.'</option>';
 			}
 			echo '<br/>CreatureSubTypeID '.$i.': <select id="CreatureSubTypeID" name="CreatureSubTypeID[]">'
@@ -532,7 +535,7 @@ else
 			for($i = 0; $i < 5; $i++)
 			{ //hide attack div if blank - never hide first one
 				?>
-				<div name="attack" <?php echo(($quick_stats->arr_quick_attack_id[$i] == '' && $i != 0) ? 'class="hide"' : ''); ?>>
+				<div name="attack" <?php echo((isset($quick_stats->arr_quick_attack_id[$i]) && $i != 0) ? 'class="hide"' : ''); ?>>
 					<hr class="attack_separator"/>
 					
 					<input type='hidden' name='arr_quick_attack_id[]' value='<?php echo $quick_stats->arr_quick_attack_id[$i]; ?>'/>

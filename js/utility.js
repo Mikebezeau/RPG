@@ -80,10 +80,7 @@ function ajax_action(file_name,id,data,callback,async)
 		.done(function(data) { 
 				//if PHP error first character of data will be "<br />" because error will be echoed out
 				//if so display error in console
-				if(data.charAt(0) == "<br />")
-				{
-					console.log(data);
-				}
+				console.log(data);
 				
 				callback(data);
 			});

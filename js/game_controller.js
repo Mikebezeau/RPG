@@ -1603,7 +1603,8 @@ GameController.load_level = function(area_id, start_x, start_y, load_from_save)
 	GameController.start_y = start_y;
 	
 	//set new area id for main PC character_stats
-	GameController.characters[0].character_stats.area_id = area_id;
+	//if using level editor, do not set
+	if(!GameController.edit) GameController.characters[0].character_stats.area_id = area_id;
 	
 	if(arguments.length < 4)
 	{

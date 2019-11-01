@@ -333,64 +333,69 @@
 			
 			if($result = mysqli_query($link,$query)) {
 				//Get resulting row from query
-				$row = mysqli_fetch_object($result);
-				
-				$this->character_id = (int)$row->CharacterID;
-				$this->quick_stat_id = (int)$row->QuickStatID;
-				$this->character_name = $row->CharacterName;
-				$this->quick_stat_catagory_id = (int)$row->CatagoryID;//this changes when creature summoned or charmed ? for charmed will need in PCCharacterInfo
-				$this->hp_damage = (int)$row->HPDamage;
-				$this->asp_used = (int)$row->ArcaneSPUsed;
-				$this->dsp_used = (int)$row->DivineSPUsed;
-				$this->init_roll = (int)$row->InitRoll;
-				$this->action_complete = $row->ActionComplete;
-				$this->area_id = (int)$row->AreaID;
-				$this->x_pos = (int)$row->Xpos;
-				$this->y_pos = (int)$row->Ypos;
-				$this->master_description = $row->Description;
-				
-				$this->sprite_id = (int)$row->SpriteID;
-				$this->anim_sprites_index = (int)$row->AnimSpritesIndex;
-				$this->sprite_file = $row->FilePathName;
-				$this->sprite_scale = floatval($row->CustomSpriteScale);
-				$this->default_sprite_scale = floatval($row->DefaultSpriteScale);
-				if($this->sprite_scale == 0)
+				if($row = mysqli_fetch_object($result))
 				{
-					$this->sprite_scale = $this->default_sprite_scale;
-				}
-				
-				$this->thumb_pic_id = (int)$row->ThumbPicID;
-				$this->portrait_pic_id = (int)$row->PortraitPicID;
-				$this->full_pic_id = (int)$row->FullPicID;
-				
-				$this->conversation_id = 0;
-				$result = mysqli_query($link,"SELECT * FROM Conversations WHERE CharacterID = ".$this->character_id);
-				if($conversationData = mysqli_fetch_object($result))
-				{
-					$this->conversation_id = $conversationData->ConversationID;
-				}
-				
-				//images
-				if($this->character_id > 0)
-				{
-					$result = mysqli_query($link,"SELECT FileName FROM ThumbPics WHERE ThumbPicID = ".$this->thumb_pic_id);
-					if($row = mysqli_fetch_object($result))
+					$this->character_id = (int)$row->CharacterID;
+					$this->quick_stat_id = (int)$row->QuickStatID;
+					$this->character_name = $row->CharacterName;
+					$this->quick_stat_catagory_id = (int)$row->CatagoryID;//this changes when creature summoned or charmed ? for charmed will need in PCCharacterInfo
+					$this->hp_damage = (int)$row->HPDamage;
+					$this->asp_used = (int)$row->ArcaneSPUsed;
+					$this->dsp_used = (int)$row->DivineSPUsed;
+					$this->init_roll = (int)$row->InitRoll;
+					$this->action_complete = $row->ActionComplete;
+					$this->area_id = (int)$row->AreaID;
+					$this->x_pos = (int)$row->Xpos;
+					$this->y_pos = (int)$row->Ypos;
+					$this->master_description = $row->Description;
+					
+					$this->sprite_id = (int)$row->SpriteID;
+					$this->anim_sprites_index = (int)$row->AnimSpritesIndex;
+					$this->sprite_file = $row->FilePathName;
+					$this->sprite_scale = floatval($row->CustomSpriteScale);
+					$this->default_sprite_scale = floatval($row->DefaultSpriteScale);
+					if($this->sprite_scale == 0)
 					{
-						$this->thumb_pic_file = $row->FileName;//this should be upgraded
+						$this->sprite_scale = $this->default_sprite_scale;
+					}
+					
+					$this->thumb_pic_id = (int)$row->ThumbPicID;
+					$this->portrait_pic_id = (int)$row->PortraitPicID;
+					$this->full_pic_id = (int)$row->FullPicID;
+					
+					$this->conversation_id = 0;
+					$result = mysqli_query($link,"SELECT * FROM Conversations WHERE CharacterID = ".$this->character_id);
+					if($conversationData = mysqli_fetch_object($result))
+					{
+						$this->conversation_id = $conversationData->ConversationID;
+					}
+					
+					//images
+					if($this->character_id > 0)
+					{
+						$result = mysqli_query($link,"SELECT FileName FROM ThumbPics WHERE ThumbPicID = ".$this->thumb_pic_id);
+						if($row = mysqli_fetch_object($result))
+						{
+							$this->thumb_pic_file = $row->FileName;//this should be upgraded
+						}
+					}
+					
+					if($this->full_pic_id > 0)
+					{
+						//query for current picture
+						$result = mysqli_query($link,'SELECT FileName, Width, Height FROM FullPics WHERE FullPicID = '.$this->full_pic_id);
+						$row = mysqli_fetch_object($result);
+						$this->full_pic_file_name = $row->FileName;
+						$this->full_pic_width = $row->Width;
+						$this->full_pic_height = $row->Height;
 					}
 				}
-				
-				if($this->full_pic_id > 0)
-				{
-					//query for current picture
-					$result = mysqli_query($link,'SELECT FileName, Width, Height FROM FullPics WHERE FullPicID = '.$this->full_pic_id);
-					$row = mysqli_fetch_object($result);
-					$this->full_pic_file_name = $row->FileName;
-					$this->full_pic_width = $row->Width;
-					$this->full_pic_height = $row->Height;
-				}
-				
 			} //end if result
+			else
+			{
+				//error checking
+				echo("character_id:".$character_id);
+			}
 		} //end get_data_master_character
 	
 		//STATS
@@ -596,8 +601,8 @@
 			
 			//Get resulting row from either the QuickSkills query or the SkillList query to get the skill name
 			while ($row = mysqli_fetch_object($result)) {
-				//$this->arr_skill_id[] = (int)$row->SkillID;
-				//$this->arr_skill_name[] = $row->SkillName;
+				$this->arr_skill_id[] = (int)$row->SkillID;
+				$this->arr_skill_name[] = $row->SkillName;
 				if(isset($row->SkillRoll)) {
 					$this->arr_skill_roll[] =(int)$row->SkillRoll;
 				}
