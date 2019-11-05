@@ -237,18 +237,23 @@ MenuController.BattleMenuCancelAction = function()
 	$('#game-menu-top-action-confirm').hide();
 	$('#select-target').hide();
 	$('#select-target').html('SELECT TARGET');
+	
 	//this shows the attack icon after player cancels attack
 	$('#load-abilities').show();
+	
 	//battle screen list menu
 	if($('#battle-menu-list').html() != '')
 	{
 		$('#battle-menu-list-container').show();
 	}
+	
 	//map screen list menu
 	if($('#game-menu-inner').html() != '')
 	{
 		$('#game-menu').show();
 	}
+	//clear area of effect highlight
+	
 }
 
 MenuController.BattleMenuClearAction = function()

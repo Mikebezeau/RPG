@@ -24,7 +24,6 @@ function EffectQuery($link, $effectTypeTable, $effectTypeFieldID, $effectTypeID,
 	}
 	else
 	{
-		//echo 
 		$effectQuery = 
 			"SELECT $effectTypeTable.*, Effects.*, AppliesVsCreatureTypes.TypeName AS AppliesVsTypeName, AppliesVsCreatureSubTypes.TypeName AS AppliesVsSubTypeName 
 				FROM $effectTypeTable INNER JOIN Effects USING(EffectID) 
@@ -38,6 +37,8 @@ function EffectQuery($link, $effectTypeTable, $effectTypeFieldID, $effectTypeID,
 			$effectQuery .= " AND AbilityRank = ".$abilityRank;
 		}
 	}
+	
+	//echo('<br/><br/>effectQuery: '.$effectQuery.'<br/>');
 	
 	$effect_arr = array();
 	

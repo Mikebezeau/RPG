@@ -141,7 +141,15 @@ CutsceneController.init = function()
 
 CutsceneController.Play = function(cutscene_id)
 {
-	console.log(cutscene_id);
+	if(cutscene_id)
+	{
+		console.log(cutscene_id);
+	}
+	else
+	{
+		console.log('No cutscene_id');
+		return 0;
+	}
 	//CutsceneController.End();
 	//return false;
 	CutsceneController.current_cutscene_id = cutscene_id;

@@ -957,6 +957,7 @@ var CharacterController = {
 			CharacterController.SpellDone();
 			return false;
 		}
+		
 		$('#create-character-page').html('<h2>Loading Spells...</h2>');
 		$.ajax({
 			type: 'POST',
@@ -1024,18 +1025,30 @@ var CharacterController = {
 							
 							top = Math.floor(row_counter/3) * (10 + switchToMobileDisplay*40);
 							
+							
+							//auto select all available spells
+							//CharacterController.SpellSelect(spell_data.spell_id[i]);
+							
+							//removed for auto-select//
 							spell_selection_img_container += '<span class="pc-select-spell" onclick="CharacterController.ClickSpell('+i+');" style="position:relative; top: '+top+'px; margin-left:25px; margin-right:119px; margin-bottom:60px;" data-id="'+spell_data.spell_id[i]+'">';
 							var pcSelectIcon = new MenuController.MenuItem(spell_data.spell_image[i], spell_data.spell_name[i], 0, [])
 							spell_selection_img_container += pcSelectIcon.CreateRingIcon('', 0, 1, false, true);//if coords are 0,0 text doesn't get centred
 							spell_selection_img_container += '</span>';
 							row_counter++;
+							//
+							
 						}
 					}
+					//auto selected all available spells skip to next step
+					//CharacterController.SpellDone();
+					
+					//removed for auto-select//
 					spell_selection_img_container += '</div>';
 					$('#create-character-page').append(spell_selection_img_container);
 					$('#create-character-page').append('<div style="margin-top:'+(top+90)+'px; margin-bottom:60px;"><span id="pc-character-spells-next" class="button" onclick="CharacterController.SpellDone();">Next</span></div>');
-					
 					CharacterController.SpellHighlightSelected();
+					//
+					
 				});
 	},
 
@@ -1578,6 +1591,7 @@ var CharacterController = {
 			data: CharacterController.new_character_selection
 		})
 			.done(function(data) {
+					console.log(data);
 					data = $.parseJSON(data);
 					CharacterController.new_character_selection.character_id = data.character_id;
 					GameController.new_player = 0;

@@ -1459,6 +1459,7 @@ GameController.start = function(character_id, area_id)
 	//load player party data
 	var player_character_stats
 	var pc_callback = function(postsCallback){
+		console.log(postsCallback);
 		parsed_data = $.parseJSON(postsCallback);//arr_character_stats //arr_item_events //arr_completed_events //arr_knowledge_tag_id
 		
 		//array of character stats for all in party
@@ -2376,6 +2377,11 @@ GameController.SaveGame = function(showMessages, characters_to_save)
 
 GameController.RunEvent = function(event_id)
 {
+	console.log('event_id: '+event_id);
+	if (typeof event_id == 'undefined')
+	{
+		return 0;
+	}
 	//return false to stop player from moving to square
 	var game = GameController;
 	var allow_player_move = 1;
@@ -2436,8 +2442,8 @@ GameController.RunEvent = function(event_id)
 	//if battle event
 	
 	//if cutscene event
-	//onsole.log(eventData.Cutscene);
-	if(eventData.Cutscene != '')
+	console.log(eventData.Cutscene);
+	if(eventData.Cutscene)
 	{
 		//onsole.log('play');
 		CutsceneController.Play(eventData.Cutscene);

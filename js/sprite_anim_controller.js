@@ -26,7 +26,7 @@ SpriteAnimController.Animation = function(frames, frameDuration, leftX, topY, ti
 {
 	this.frames = frames;
 
-	this.frameDuration = frameDuration;
+	this.frameDuration = frameDuration * 0.6;
 	
 	this.leftX = leftX;
 	this.topY = topY;
@@ -453,7 +453,7 @@ SpriteAnimController.StartAnimation = function(spriteIndex, animationName, x, y,
 		console.log('sprite sheet #:'+spriteIndex,'animation name:'+animationName,'duration:'+(this_animation.frames.length * this_animation.frameDuration));
 	}
 	
-	//adding a bit extra to time
+	//adding a bit extra to time before it think animation is done
 	return this_animation.frames.length * this_animation.frameDuration * 1.2;
 }
 

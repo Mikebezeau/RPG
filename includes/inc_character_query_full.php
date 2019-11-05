@@ -520,22 +520,25 @@ foreach ($arr_classid as $i => $value) {
 		
 		//bonus sp based on attribute modifier and highest level of known spells
 		$query_bonus = 'SELECT '.$msl.' AS BonusPoints FROM BonusSpellPointValues WHERE AttributeMod = '.$arr_attmod[$classrow->MagicAttributeID];
-		// perform ClassSkill query
-		if($result_bonus = mysqli_query($link,$query_bonus)) {
-			//??????????????????????????$arr_classskill = array();
-			// get resulting rows from query
-			$row_bonus = mysqli_fetch_object($result_bonus);
+		
+		// perform attribute bonus query
+		$asp_attribute_bonus = 0;
+		$dsp_attribute_bonus = 0;
+		$result_bonus = mysqli_query($link,$query_bonus);
+		//??????????????????????????$arr_classskill = array();
+		// get resulting rows from query
+		if($row_bonus = mysqli_fetch_object($result_bonus))
+		{
+			$asp_attribute_bonus = $dsp_attribute_bonus = $row_bonus->BonusPoints;
 		} //end if result
 		
 		//if arcane or divine magic
 		if($arr_class_magic[$i] == 'arcane') {
 			$arr_class_asp[$i] = $row_sp->Value;
-			$asp_attribute_bonus = $row_bonus->BonusPoints;
 			$total_asp += $arr_class_asp[$i] + $asp_attribute_bonus + $asp_bonus;
 		} //end if arcane magic
 		else {
 			$arr_class_dsp[$i] = $row_sp->Value;
-			$dsp_attribute_bonus = $row_bonus->BonusPoints;
 			$total_dsp += $arr_class_dsp[$i] + $dsp_attribute_bonus + $dsp_bonus;
 		} //end if arcane magic
 		
