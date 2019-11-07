@@ -109,17 +109,17 @@ EffectController.RemoveEffect = function(character_index, effect_index, refreshD
 			//set hp to -100 so character doesn't get drawn
 			for(var i=0; i<this_effect.EffectData.length; i++)
 			{
-				for(var j=0; j<GameController.characters.length; j++)
+				for(var j=GameController.characters.length-1; j>=0; j--)//counting down to avoid issue when remove elents from array
 				{
 					if(GameController.characters[j].character_stats.character_id == this_effect.EffectData[i])
 					{
-						//GameController.characters[j].unselectable = true; //can use hp -100 to tell if not selectable?
-						GameController.characters[j].character_stats.hp = -100;
+						//***do special effect anim as they dissapear
 						
+						//remove from GameController.characters
+						GameController.characters.splice(j,1);
 						//update menu for PC
 						if(CharacterController.IsPartyMember(GameController.characters[j]))
 						{
-							GameController.characters[j].party_id = -1;
 							FormationController.SetFormation();
 							FormationController.SetFormationMenu();
 							//remove creature from menu
@@ -722,9 +722,10 @@ EffectController.GetEffectTypeMods = function(character_stats, modType, secondar
 				//---
 				
 				//did someone forget to set EffectModType?
-				if(this_effect_mod_type == 0)
+				if(this_effect_mod_type == 0 && effect_list[i].effect.EffectSummonID == 0)
 				{
-					console.log('EffectModTypeID not set!',effect_list[0].effect);
+					//dont log for summon/poly spells
+					console.log('EffectModTypeID not set, possible problem for some effects',effect_list[0].effect);
 					//alert(effect_list[0].effect.EffectName+': EffectModTypeID not set!');
 				}
 				else
@@ -911,6 +912,8 @@ EffectController.CreateSummoned = function(summoner_character_stats, currentNumE
 	//is it a GoodGuy summon?
 	character_stats_master.GoodGuy = GoodGuy;
 	
+	//console.log(character_stats_master);
+	
 	//polymorph
 	if(character_index_polymorphed != -1)
 	{
@@ -1013,14 +1016,15 @@ EffectController.CreateSummoned = function(summoner_character_stats, currentNumE
 		
 		//wait for effect to be added to character, then transfer character_stats.tempEffectData to effect.EffectData, then save game
 		EffectController.timerInterval = setInterval(function(){
-				if(currentNumEffects+1 == summoner_character_stats.effects.length)//summoning effect has been added
-				{
-					clearInterval(EffectController.timerInterval);
-					//save game state with new creatures in existence
-					summoner_character_stats.effects[summoner_character_stats.effects.length-1].EffectData = summoner_character_stats.tempEffectData;
-					GameController.SaveGame(0);
-				}
-			}, 100);
+			//summoning effect has been added && sprites are loaded
+			if(currentNumEffects+1 == summoner_character_stats.effects.length && game.resources_loading == game.resources_loaded)
+			{
+				clearInterval(EffectController.timerInterval);
+				//save game state with new creatures in existence
+				summoner_character_stats.effects[summoner_character_stats.effects.length-1].EffectData = summoner_character_stats.tempEffectData;
+				GameController.SaveGame(0);
+			}
+		}, 100);
 	}
 }
 
@@ -1169,7 +1173,7 @@ EffectController.DeleteMultipleEffect = function(effect_type_table, effect_id)
 EffectController.LoadEffectEditor = function(effect_title, effect_type, effect_type_id, ability_rank, effect_index, is_new_multiple)
 {
 	//for class abilities, must include rank
-	var rank_string = ability_rank != 0 ? '&abilityrank='+ability_rank : '';
+	var rank_string = ability_rank != 0 ? '&abilityrank='+ability_rank:0;
 	if(arguments.length < 5) effect_index = 0;
 	var new_multiple_string = (arguments.length >= 6 && is_new_multiple) ? '&newmultiple=1': '';
 	

@@ -5,7 +5,7 @@
 	// Connect to database using function from "inc_connect.php"
 	$link = dbConnect();
 	
-	$character_id = $_POST["id"];
+	$character_id = isset($_POST["id"])?$_POST["id"]:0;
 
 	//deleting summoned character, ids and player_character_id in $_POST['data']
 	if($character_id == 0)
@@ -26,7 +26,7 @@
 		$query = "Select CatagoryID FROM MasterCharacter WHERE CharacterID = ".$character_id;
 		$result = mysqli_query($link,$query);
 		$row = mysqli_fetch_object($result);
-		//dont delete PCs, just move them to area 0
+		//dont delete PC, just move them to area 0
 		if($row->CatagoryID == 1)
 		{
 			$query = "UPDATE MasterCharacter SET AreaID = 0 WHERE CharacterID = ".$character_id;

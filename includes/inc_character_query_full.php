@@ -450,7 +450,6 @@ foreach ($arr_classid as $i => $value) {
 	$query = 'SELECT SkillID FROM ClassSkill WHERE ClassID = '.$arr_classid[$i];
 	// perform ClassSkill query
 	if($result = mysqli_query($link,$query)) {
-		$arr_classskill = array();
 		// get resulting rows from query
 		while($row = mysqli_fetch_object($result))
 		{

@@ -1459,7 +1459,7 @@ GameController.start = function(character_id, area_id)
 	//load player party data
 	var player_character_stats
 	var pc_callback = function(postsCallback){
-		console.log(postsCallback);
+		//console.log(postsCallback);
 		parsed_data = $.parseJSON(postsCallback);//arr_character_stats //arr_item_events //arr_completed_events //arr_knowledge_tag_id
 		
 		//array of character stats for all in party
@@ -2146,7 +2146,7 @@ GameController.LoadLevelCallback = function(data)
 		if(quickstat_character_stats_index == -1)
 		{
 		    
-		    //alert('loading character: '+{'player_character_id':game.player.character_id});
+		    //alert('loading character player_character_id ':game.player.character_id});
 			
 			//load full data non-asynchronously so that has a chance to load before loading next character 
 			ajax_action('load_character_data.php',load_monster[i].character_id,{'player_character_id':game.player.character_id},CharacterController.LoadCharacterCallback, false);

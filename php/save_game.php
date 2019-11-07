@@ -51,7 +51,7 @@
 				{
 					$table = 'CharacterWeapon';
 					$tableID = 'WeaponID';
-					$offHandUpdate = $item->off_hand == 1 ? ', OffHand = 1' : '';
+					$offHandUpdate = (isset($item->off_hand) && $item->off_hand == 1)? ', OffHand = 1' : '';//does not exist for NPC/Monsters
 				}
 				elseif($item->type == 'armor')
 				{
@@ -86,6 +86,8 @@
 	$result = mysqli_query($link,$query);
 	for($i=0; $i<count($data->player_knowledge_tags); $i++)
 	{
+		echo('Know tags possible issue');
+		print_r($data->player_knowledge_tags);
 		//echo 
 		$query = "INSERT INTO CharacterKnowledge (CharacterID, KnowledgeTagID) VALUES (".$player_character_id.", ".$data->player_knowledge_tags[$i].")";
 		$result = mysqli_query($link,$query);

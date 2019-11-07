@@ -42,10 +42,13 @@
 		$del_mc_result = mysqli_query($link,$query);
 	}
 	
+	//if reset/deleted while any enemy has summoned creatures,
+	//must find and delete entries in 'mastercharacter' for those creatures
+	
+	
 	//delete players PCCharacterInfo
 	$query = "DELETE FROM PCCharacterInfo WHERE PlayerCharacterID=".$character_id;
 	$result = mysqli_query($link,$query);
-	
 	
 	if(!isset($included_from_delete))
 	{

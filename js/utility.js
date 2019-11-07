@@ -78,10 +78,13 @@ function ajax_action(file_name,id,data,callback,async)
 		data: {'id' : id, 'data' : JSON.stringify(data)}
 	})
 		.done(function(data) { 
-				//if PHP error first character of data will be "<br />" because error will be echoed out
+				//if PHP error data will begin with '<br />' when error is echoed out
 				//if so display error in console
-				console.log(data);
-				
+				//if(file_name == 'edit_map_delete_npc_monster.php' || data.substring(0, 5) == '<br />')
+				if(data.substring(0, 5) == '<br />')
+				{
+					console.log(data);
+				}
 				callback(data);
 			});
 }

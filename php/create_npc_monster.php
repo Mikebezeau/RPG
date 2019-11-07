@@ -10,7 +10,6 @@ $quick_stat_id = $id;
 
 $_POST = json_decode($_POST['data'], true);
 
-$quick_stat_catagory_id = $_POST["quick_stat_catagory_id"];
 $AreaID = $_POST["AreaID"];
 
 $full_pic_id = -1;//not using this really anymore
@@ -21,6 +20,8 @@ $character_stats = new Quick_Stat();
 //summoning creatures
 if(isset($_POST["summoned_by_character_id"]))
 {
+	$quick_stat_catagory_id = $_POST['summoner_good_guy']?2:3;//for summoning
+	
 	$character_id_arr = array();
 	
 	//polymorphing, update PCCharacterInfo with polymorphed quick stat id
@@ -86,6 +87,8 @@ if(isset($_POST["summoned_by_character_id"]))
 //used with map editor
 else
 {
+	$quick_stat_catagory_id = $_POST["quick_stat_catagory_id"];
+	
 	if($quick_stat_catagory_id != 1)
 	{
 		$name = $_POST["name"];
