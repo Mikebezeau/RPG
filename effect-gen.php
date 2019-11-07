@@ -7,10 +7,11 @@ $link = dbConnect();
 //delete effect function
 function DeleteEffect($local_link, $effectTypeTable, $oldEffectID)
 {
+	//missing $effectTypeFieldID below
 	$query = "DELETE FROM $effectTypeTable WHERE EffectID = ".$oldEffectID;
 	$result = mysqli_query($local_link,$query);
 	
-	//delete from all tables
+	//delete from all other effect tables and dice roll table
 	$query = "DELETE FROM Effects WHERE EffectID = ".$oldEffectID;
 	$result = mysqli_query($local_link,$query);
 	
@@ -62,12 +63,36 @@ function DeleteEffect($local_link, $effectTypeTable, $oldEffectID)
 	//echo mysqli_error($local_link);
 }
 
-//deleting effect option
 if(isset($_GET['deleteeffectid']))
 {
 	$effectTypeTable = $_GET['effecttypetable'];
-	$delete_effect_id = $_GET['deleteeffectid'];
-	DeleteEffect($link, $effectTypeTable, $delete_effect_id);
+	$deleteEffectId = $deleteEffectTypeId = $_GET['deleteeffectid'];
+	$effectTypeFieldId = isset($_GET['effecttypefieldid'])?$_GET['effecttypefieldid']:-1;
+	
+	if($effectTypeFieldId != -1)
+	{
+		//fully deleting effect and all associated effects
+		//deleting from effectsabilities & quickspecial (for NPC and Monster abilities)
+		
+		//query $effectTypeTable (effectsabilities, effectsarmor, effectsspells, etc.)
+		//get list of all other EffectID's related to the main EffectID
+		$query = "SELECT EffectID FROM ".$effectTypeTable." WHERE ".$effectTypeFieldId."=".$deleteEffectTypeId;
+		$effectIDListResult = mysqli_query($link,$query);
+		while($effectIDListRow = mysqli_fetch_object($effectIDListResult))
+		{
+			DeleteEffect($link, $effectTypeTable, $effectIDListRow->EffectID);
+		}
+		if($effectTypeFieldId == "QuickSpecialID")
+		{
+			//if an NPC/Monster ability, delete from quickspecial as well
+			$query = "DELETE FROM quickspecial WHERE QuickSpecialID=".$deleteEffectTypeId;
+			$deleteQuick = mysqli_query($link,$query);
+		}
+	}
+	else{
+		//deleting just 1 effect sub option
+		DeleteEffect($link, $effectTypeTable, $deleteEffectId);
+	}
 	exit;
 }
 
@@ -83,6 +108,9 @@ while($effectsDescribeRow = mysqli_fetch_object($effectsDescribeResult))
 {
 	$effectsDescribe[] = $effectsDescribeRow;
 }
+
+//echo('_REQUEST: ');
+//print_r($_REQUEST);
 
 if(isset($_REQUEST['effecttype']))
 {
@@ -110,7 +138,7 @@ if(isset($_REQUEST['effecttype']))
 			case 'ability':
 				$effectTypeTable = 'EffectsAbilities';
 				$effectTypeFieldID = 'AbilityID';
-				$abilityRank = isset($_REQUEST['abilityrank']) ? $_REQUEST['abilityrank'] : 0;
+				//$abilityRank = isset($_REQUEST['abilityrank']) ? $_REQUEST['abilityrank'] : 0;
 				break;
 				
 			case 'special':
@@ -161,7 +189,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
 	$action = $_POST['action'];
 	
+	//echo($_POST);
+	
 	parse_str($_POST['effectability'], $effectability);
+	if(!isset($effectability['AbilityRank'])) $effectability['AbilityRank'] = 0;
+		
 	parse_str($_POST['effectdata'], $effectdata);
 	
 	parse_str($_POST['effectarea'], $effectAreaData);
@@ -211,9 +243,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			$oldEffectID = $effectdata['EffectID'];
 			DeleteEffect($link, $effectTypeTable, $oldEffectID);
 		}
+		//print_r($effectability);
 		
-		//if $effectability->AbilityEffectTypeID == 1 then Spell-Like ability, this doesnt have it's own effect, it uses a spell effect
-		if($effectability->AbilityEffectTypeID == 1)
+		/* DO NOT NEED THIS?
+		//if $effectability['AbilityEffectTypeID'] == 1 then Spell-Like ability, this doesnt have it's own effect, it uses a spell effect
+		if($effectability['AbilityEffectTypeID'] == 1)
 		{
 			//$returnData['effectability'] = $effectability;
 			//$returnData['queries'][] = 
@@ -223,14 +257,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				$returnData['errors'] = mysqli_error($link);
 			}
 			//$returnData['queries'][] = 
-			$query = 
+			echo $query = 
 				"INSERT INTO EffectsAbilities "
 					."(".$effectTypeFieldID.", EffectID, AbilityEffectTypeID, SpellID, SpellLikeCasterLevel, AbilitySaveDCAttributeModID, AbilitySaveDCMod, AbilitySaveDCFixed, "
 					."AbilityPerDayBase, AbilityPerDayAttributeModID, AbilityRoundsPerDayBase, AbilityRoundsPerDayAttributeModID, AbilityRank)"
-				."VALUES('".$effectTypeID."', '0', ".$effectability['AbilityEffectTypeID']."', '".$effectability['SpellID']."','".$effectability['SpellLikeCasterLevel']."','"
+				."VALUES('".$effectTypeID."', '0', '".$effectability['AbilityEffectTypeID']."', '".$effectability['SpellID']."','".$effectability['SpellLikeCasterLevel']."','"
 					.$effectability['AbilitySaveDCAttributeModID']."','".$effectability['AbilitySaveDCMod']."','".$effectability['AbilitySaveDCFixed']
 					."','".$effectability['AbilityPerDayBase']."','".$effectability['AbilityPerDayAttributeModID']."','"
-					.$effectability['AbilityRoundsPerDayBase']."','".$effectability['AbilityRoundsPerDayAttributeModID'].",'".$effectability['AbilityRank']."')";
+					.$effectability['AbilityRoundsPerDayBase']."','".$effectability['AbilityRoundsPerDayAttributeModID']."','".$effectability['AbilityRank']."')";
 			if(!$result = mysqli_query($link,$query))
 			{
 				$returnData['errors'] = mysqli_error($link);
@@ -241,6 +275,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			echo json_encode($returnData);
 			exit;
 		}
+		*/
 		
 		//insert effect (includes animation data)
 		//build INSERT STATEMENT
@@ -263,6 +298,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		}
 		//Effects
 		//$returnData['queries'][] = 
+		//echo 
 		$insertQuery = "INSERT INTO Effects($fieldsString) VALUES ($valuesString)";
 		if(!$result = mysqli_query($link,$insertQuery)) $returnData['errors'] = mysqli_error($link);
 		
@@ -274,11 +310,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
 			//$returnData['effectability'] = $effectability;
 			//$returnData['queries'][] = 
+			//echo 
 			$query = 
 				"INSERT INTO EffectsAbilities "
 					."(".$effectTypeFieldID.", EffectID, AbilityEffectTypeID, SpellID, SpellLikeCasterLevel, AbilitySaveDCAttributeModID, AbilitySaveDCMod, AbilitySaveDCFixed, "
 					."AbilityPerDayBase, AbilityPerDayAttributeModID, AbilityRoundsPerDayBase, AbilityRoundsPerDayAttributeModID, AbilityRank)"
-				."VALUES('".$effectTypeID."', '".$EffectID."', '".$effectability['AbilityEffectTypeID']."', '0','0','"
+				."VALUES('".$effectTypeID."', '".$EffectID."', '".$effectability['AbilityEffectTypeID']."', '".$effectability['SpellID']."','".$effectability['SpellLikeCasterLevel']."','"
 					.$effectability['AbilitySaveDCAttributeModID']."','".$effectability['AbilitySaveDCMod']."','".$effectability['AbilitySaveDCFixed']
 					."','".$effectability['AbilityPerDayBase']."','".$effectability['AbilityPerDayAttributeModID']."','"
 					.$effectability['AbilityRoundsPerDayBase']."','".$effectability['AbilityRoundsPerDayAttributeModID']."','".$effectability['AbilityRank']."')";
@@ -290,12 +327,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		else
 		{
 			//$returnData['queries'][] = 
-			$insertQuery = "INSERT INTO $effectTypeTable ($effectTypeFieldID, EffectID) VALUES ('$effectTypeID', '$EffectID')";
+			echo $insertQuery = "INSERT INTO $effectTypeTable ($effectTypeFieldID, EffectID) VALUES ('$effectTypeID', '$EffectID')";
 			if(!$result = mysqli_query($link,$insertQuery)) $returnData['errors'] = mysqli_error($link);
 		}
 		
 		$EffectAreaID = 'NULL';
-		//IF EffectArea SELECTED
 		if($effectAreaData['EffectAreaTypeID'] !== null)
 		{
 			foreach($effectAreaData['EffectAreaTypeID'] as $i => $value)
@@ -311,8 +347,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		}
 		
 		$EffectHPModID = 'NULL';
-		//$returnData['queries']['effecthpmod data'] = $_POST['effecthpmod']['data'];
-		//IF EffectHPMod SELECTED
 		if($effectHPmodData['EffectHPModTypeID'] !== null)
 		{
 			//$returnData['queries']['EffectHPModTypeID'] = $effectHPmodData['EffectHPModTypeID'];
@@ -353,10 +387,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			}
 			$EffectHPModID = mysqli_insert_id($link);
 		}
-		//END IF EffectHPMod
 		
 		$EffectConditionID = 'NULL';
-		//IF EffectCondition SELECTED
 		if($effectConditionData['EffectConditionTypeID'] !== null)
 		{
 			foreach($effectConditionData['EffectConditionTypeID'] as $i => $value)
@@ -410,7 +442,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				
 				//EffectAttackMod DamageModDiceRollPerID
 				$DamageModDiceRollPerID = 0;
-				print_r($effectattackmod['damagedicerollper']);
 				if(($DamageModDiceRollPer['NumDice'][$i] > 0 && $DamageModDiceRollPer['DieType'][$i] > 0) || $DamageModDiceRollPer['RollMod'][$i] != 0)
 				{
 					//$returnData['queries'][] = 
@@ -448,9 +479,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			}
 			$EffectAttackModID = mysqli_insert_id($link);
 		}
-		//END IF EffectHPMod
 		
-		//EffectACMod
 		$EffectACModID = 'NULL';
 		if($EffectACModData['ACModAttributeID'] !== null)
 		{
@@ -699,12 +728,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 //INITIAL LOAD, load saved effect if is one
 elseif(isset($_REQUEST['effecttype']))
 {
+	//echo('effecttype: '.$_REQUEST['effecttype']);
+	
 	//effect_query_funciton
 	include_once("./php/character_ability_effect_query_funciton.php"); 
-	//echo($effectTypeTable.' '.$effectTypeFieldID.' '.$effectTypeID.'<br/>');
-	
 	//search to begin editing current effect
+	//echo('effectTypeTable, effectTypeFieldID, effectTypeID, abilityRank: '.$effectTypeTable." ".$effectTypeFieldID." ".$effectTypeID." ".$abilityRank);
 	$ability_effect = EffectQuery($link, $effectTypeTable, $effectTypeFieldID, $effectTypeID, $abilityRank);
+	//print_r($ability_effect);
 	
 	$multiple_effects_icon = array();
 	$multiple_effects_id = array();
@@ -727,6 +758,63 @@ elseif(isset($_REQUEST['effecttype']))
 	{
 		//reset effect to create a new one
 		$ability_effect = new stdClass();
+		
+		$ability_effect->EffectTypeTable = $effectTypeTable;
+		
+		$ability_effect->EffectID = 
+		$ability_effect->ActionTypeID = 
+		//$ability_effect->NumTimesUsed = (int)$ability_effect->NumTimesUsed;//??? 144000 rounds in a day
+		$ability_effect->AttackBonus = 
+		$ability_effect->AttackBonusAbilModID = 
+		$ability_effect->B_max = 
+		$ability_effect->B_min = 
+		$ability_effect->CancelAtWill = 
+		$ability_effect->CriticalRange = 
+		$ability_effect->DurationBase = 
+		$ability_effect->DurationPer = 
+		$ability_effect->EffectAreaID = 
+		$ability_effect->EffectModTypeID = 
+		$ability_effect->EffectMovementRate = 
+		$ability_effect->EffectMovementType = 
+		$ability_effect->G_max = 
+		$ability_effect->G_min = 
+		$ability_effect->HitType = 
+		$ability_effect->IsAllowSR = 
+		$ability_effect->IsAllowSave = 
+		$ability_effect->IsHarmless = 
+		//$ability_effect->ItemID = //ONLY USED FOR JOIN
+		$ability_effect->MaintainEveryRound = 
+		$ability_effect->MultipleTargetMaxDistance = 
+		$ability_effect->NumTargets = 
+		$ability_effect->R_max = 
+		$ability_effect->R_min = 
+		$ability_effect->RangeBase = 
+		$ability_effect->RangePer = 
+		$ability_effect->RequireActionEveryRound = 
+		$ability_effect->SaveEffect = 
+		$ability_effect->SaveEveryRound = 
+		$ability_effect->SaveID = 
+		$ability_effect->SpecialSaveEffectID = 
+		$ability_effect->TargetTypeID = 
+		$ability_effect->TargetsCreatureTypeID = 
+		$ability_effect->OnlyEffectsCreatureTypeID = 
+		$ability_effect->TargetsCreatureSubTypeID = 
+		$ability_effect->OnlyEffectsCreatureSubTypeID = 
+		$ability_effect->AppliesVsCreatureTypeID = 
+		$ability_effect->AppliesVsCreatureSubTypeID = 
+		$ability_effect->particle_count = 
+		$ability_effect->shock_lines = 
+		$ability_effect->IsMultipleEffectOptions = 
+		$ability_effect->IsChooseClassAbility = 0;
+		 
+		$ability_effect->EffectsEquipmentID = NULL;//(int)$ability_effect->EffectsEquipmentID;
+		$ability_effect->IsDurationCountdownOnCharacterTurn = 1;//(int)$ability_effect->IsDurationCountdownOnCharacterTurn;
+		
+		//for effectsability table (innate ablities and NPC/Monster abilities)
+		$ability_effect->AbilitySaveDCAttributeModID =
+		$ability_effect->AbilityPerDayAttributeModID =
+		$ability_effect->AbilityRoundsPerDayAttributeModID = 0;
+
 		$ability_effect->EffectArea = array();
 		$ability_effect->EffectHPMod = array();
 		$ability_effect->EffectCondition = array();
@@ -751,6 +839,11 @@ if(isset($_GET['test']))
 
 function CreateFormInput($ability_effect_data, $fieldname, $defaultValue, $isInputArray=false)
 {
+	if(!isset($ability_effect_data->$fieldname))
+		$value = 0;
+	else
+		$value = $ability_effect_data->$fieldname;
+	
 	//select boxes
 	if($fieldname == 'TargetsCreatureTypeID' || $fieldname == 'TargetsCreatureSubTypeID' || $fieldname == 'OnlyEffectsCreatureTypeID' 
 		|| $fieldname == 'OnlyEffectsCreatureSubTypeID' || $fieldname == 'AppliesVsCreatureTypeID' || $fieldname == 'AppliesVsCreatureSubTypeID' 
@@ -776,67 +869,77 @@ function CreateFormInput($ability_effect_data, $fieldname, $defaultValue, $isInp
 	else
 	{
 		echo($fieldname.': <input type="text" id="'.$fieldname.'" name="'.$fieldname.($isInputArray?'[]':'').'" value="');
-		echo(($ability_effect_data->{$fieldname} != '')?$ability_effect_data->{$fieldname}:$defaultValue);
+		echo(($value != '')?$value:$defaultValue);
 		echo('"/><br/>');
 	}
 }
 
 function CreateCheckbox($ability_effect_data, $fieldname, $isInputArray=false)
 {
+	if(!isset($ability_effect_data->$fieldname))
+		$value = 0;
+	else
+		$value = $ability_effect_data->$fieldname;
+	
 	echo('['.$fieldname.': <input class="toggle-check" data-toggle-id="'.strToLower($fieldname).'" type="checkbox" value="1" ');
-	echo($ability_effect_data->{$fieldname} == 1)?'checked="checked"':'';
+	echo($value == 1)?'checked="checked"':'';
 	echo(' id="'.$fieldname.'" name="'.$fieldname.($isInputArray?'[]':'').'" ');
 	echo('/>] ');
 }
 
 function CreateSelectbox($ability_effect_data, $fieldname, $isInputArray=false)
 {
+	if(!isset($ability_effect_data->$fieldname))
+		$value = -1;//default for select boxes is either 0 or -1, either way top selection will be selected as default with -1
+	else
+		$value = $ability_effect_data->$fieldname;
+	
 	if($fieldname == 'AbilityEffectTypeID')
 	{
 		echo($fieldname.': <select id="'.$fieldname.'" name="'.$fieldname.($isInputArray?'[]':'').'">');
-		echo('<option value="0" '.($ability_effect_data->AbilityEffectTypeID=='0'?'selected="selected"':'').'>Extraordinary</option>'.
-			'<option value="1" '.($ability_effect_data->AbilityEffectTypeID=='1'?'selected="selected"':'').'>Spell-Like</option>'.
-			'<option value="2" '.($ability_effect_data->AbilityEffectTypeID=='2'?'selected="selected"':'').'>Supernatural</option>');
+		echo('<option value="0" '.($value=='0'?'selected="selected"':'').'>Extraordinary</option>'.
+			'<option value="1" '.($value=='1'?'selected="selected"':'').'>Spell-Like</option>'.
+			'<option value="2" '.($value=='2'?'selected="selected"':'').'>Supernatural</option>');
 		echo('</select><br/>');
 	}
 	if($fieldname == 'TargetTypeID')
 	{
 		echo($fieldname.': <select id="'.$fieldname.'" name="'.$fieldname.($isInputArray?'[]':'').'">');
-		echo('<option value="0" '.($ability_effect_data->TargetTypeID=='0'?'selected="selected"':'').'>Self</option>'.
-			'<option value="1" '.($ability_effect_data==0 || $ability_effect_data->TargetTypeID=='1'?'selected="selected"':'').'>Target creature(s)</option>'.
-			//'<option value="2" '.($ability_effect_data->TargetTypeID=='2'?'selected="selected"':'').'>Humanoid Only</option>'.
-			'<option value="3" '.($ability_effect_data->TargetTypeID=='3'?'selected="selected"':'').'>Target location</option>'.
-			'<option value="4" '.($ability_effect_data->TargetTypeID=='4'?'selected="selected"':'').'>Weapon</option>'.
-			'<option value="5" '.($ability_effect_data->TargetTypeID=='5'?'selected="selected"':'').'>Armor/Shield</option>');
+		echo('<option value="0" '.($value=='0'?'selected="selected"':'').'>Self</option>'.
+			'<option value="1" '.($ability_effect_data==0 || $value=='1'?'selected="selected"':'').'>Target creature(s)</option>'.
+			//'<option value="2" '.($value=='2'?'selected="selected"':'').'>Humanoid Only</option>'.
+			'<option value="3" '.($value=='3'?'selected="selected"':'').'>Target location</option>'.
+			'<option value="4" '.($value=='4'?'selected="selected"':'').'>Weapon</option>'.
+			'<option value="5" '.($value=='5'?'selected="selected"':'').'>Armor/Shield</option>');
 		echo('</select><br/>');
 	}
 	elseif($fieldname == 'HitType')
 	{
 		echo($fieldname.': <select id="'.$fieldname.'" name="'.$fieldname.($isInputArray?'[]':'').'">');
-		echo('<option value="0" '.($ability_effect_data->HitType=='0'?'selected="selected"':'').'>Automatic hit</option>'.
-			'<option value="1" '.($ability_effect_data->HitType=='1'?'selected="selected"':'').'>Ranged attack</option>'.
-			'<option value="2" '.($ability_effect_data->HitType=='2'?'selected="selected"':'').'>Ranged touch attack</option>'.
-			'<option value="3" '.($ability_effect_data->HitType=='3'?'selected="selected"':'').'>Melee attack</option>'.
-			'<option value="4" '.($ability_effect_data->HitType=='4'?'selected="selected"':'').'>Touch attack</option>'.
-			'<option value="5" '.($ability_effect_data->HitType=='5'?'selected="selected"':'').'>Grapple</option>');
+		echo('<option value="0" '.($value=='0'?'selected="selected"':'').'>Automatic hit</option>'.
+			'<option value="1" '.($value=='1'?'selected="selected"':'').'>Ranged attack</option>'.
+			'<option value="2" '.($value=='2'?'selected="selected"':'').'>Ranged touch attack</option>'.
+			'<option value="3" '.($value=='3'?'selected="selected"':'').'>Melee attack</option>'.
+			'<option value="4" '.($value=='4'?'selected="selected"':'').'>Touch attack</option>'.
+			'<option value="5" '.($value=='5'?'selected="selected"':'').'>Grapple</option>');
 		echo('</select><br/>');
 	}
 	elseif($fieldname == 'EffectAreaTypeID')
 	{
 		echo($fieldname.': <select id="'.$fieldname.'" name="'.$fieldname.($isInputArray?'[]':'').'">');
-		echo('<option value="0" '.($ability_effect_data->EffectAreaTypeID=='0'?'selected="selected"':'').'>Select area type</option>'.
-			'<option value="1" '.($ability_effect_data->EffectAreaTypeID=='1'?'selected="selected"':'').'>Line</option>'.
-			'<option value="2" '.($ability_effect_data->EffectAreaTypeID=='2'?'selected="selected"':'').'>Cone</option>'.
-			'<option value="3" '.($ability_effect_data->EffectAreaTypeID=='3'?'selected="selected"':'').'>Burst</option>');
+		echo('<option value="0" '.($value=='0'?'selected="selected"':'').'>Select area type</option>'.
+			'<option value="1" '.($value=='1'?'selected="selected"':'').'>Line</option>'.
+			'<option value="2" '.($value=='2'?'selected="selected"':'').'>Cone</option>'.
+			'<option value="3" '.($value=='3'?'selected="selected"':'').'>Burst</option>');
 		echo('</select><br/>');
 	}
 	elseif($fieldname == 'EffectTypeID')
 	{
 		echo($fieldname.': <select id="'.$fieldname.'" name="'.$fieldname.($isInputArray?'[]':'').'">');
-		echo('<option value="0" '.($ability_effect_data->EffectTypeID=='0'?'selected="selected"':'').'>none</option>'.
-			'<option value="1" '.($ability_effect_data->EffectTypeID=='1'?'selected="selected"':'').'>Supernatural</option>'.
-			'<option value="2" '.($ability_effect_data->EffectTypeID=='2'?'selected="selected"':'').'>Cone</option>'.
-			'<option value="3" '.($ability_effect_data->EffectTypeID=='3'?'selected="selected"':'').'>Burst</option>');
+		echo('<option value="0" '.($value=='0'?'selected="selected"':'').'>none</option>'.
+			'<option value="1" '.($value=='1'?'selected="selected"':'').'>Supernatural</option>'.
+			'<option value="2" '.($value=='2'?'selected="selected"':'').'>Cone</option>'.
+			'<option value="3" '.($value=='3'?'selected="selected"':'').'>Burst</option>');
 		echo('</select><br/>');
 	}
 	
@@ -846,15 +949,15 @@ function CreateSelectbox($ability_effect_data, $fieldname, $isInputArray=false)
 		echo '<option value="-1">Select</option>';
 		
 		if($fieldname == 'PassDRTypeID') echo '<option value="0" '.($ability_effect_data->PassDRTypeID=='0'?'selected="selected"':'').'>Pass all DR</option>';
-		else echo '<option value="0" '.($ability_effect_data->{$fieldname}=='0'?'selected="selected"':'').'>Vs. all damage</option>';
+		else echo '<option value="0" '.($value=='0'?'selected="selected"':'').'>Vs. all damage</option>';
 		
-		echo '<option value="1" '.($ability_effect_data->{$fieldname}=='1'?'selected="selected"':'').'>Cold Iron</option>'.
-			'<option value="2" '.($ability_effect_data->{$fieldname}=='2'?'selected="selected"':'').'>Silver</option>'.
-			'<option value="3" '.($ability_effect_data->{$fieldname}=='3'?'selected="selected"':'').'>Adamantine</option>'.
-			'<option value="4" '.($ability_effect_data->{$fieldname}=='4'?'selected="selected"':'').'>Good</option>'.
-			'<option value="5" '.($ability_effect_data->{$fieldname}=='5'?'selected="selected"':'').'>Evil</option>'.
-			'<option value="6" '.($ability_effect_data->{$fieldname}=='6'?'selected="selected"':'').'>Lawful</option>'.
-			'<option value="7" '.($ability_effect_data->{$fieldname}=='7'?'selected="selected"':'').'>Chaotic</option>';
+		echo '<option value="1" '.($value=='1'?'selected="selected"':'').'>Cold Iron</option>'.
+			'<option value="2" '.($value=='2'?'selected="selected"':'').'>Silver</option>'.
+			'<option value="3" '.($value=='3'?'selected="selected"':'').'>Adamantine</option>'.
+			'<option value="4" '.($value=='4'?'selected="selected"':'').'>Good</option>'.
+			'<option value="5" '.($value=='5'?'selected="selected"':'').'>Evil</option>'.
+			'<option value="6" '.($value=='6'?'selected="selected"':'').'>Lawful</option>'.
+			'<option value="7" '.($value=='7'?'selected="selected"':'').'>Chaotic</option>';
 		echo('</select><br/>');
 	}
 	
@@ -862,9 +965,9 @@ function CreateSelectbox($ability_effect_data, $fieldname, $isInputArray=false)
 	{
 		echo($fieldname.': <select id="'.$fieldname.'" name="'.$fieldname.($isInputArray?'[]':'').'">');
 		echo '<option value="0">Select</option>'.
-			'<option value="1" '.($ability_effect_data->ACModVsAttackType=='1'?'selected="selected"':'').'>Melee</option>'.
-			'<option value="2" '.($ability_effect_data->ACModVsAttackType=='2'?'selected="selected"':'').'>Ranged</option>'.
-			'<option value="3" '.($ability_effect_data->ACModVsAttackType=='3'?'selected="selected"':'').'>Area of Effect</option>';
+			'<option value="1" '.($value=='1'?'selected="selected"':'').'>Melee</option>'.
+			'<option value="2" '.($value=='2'?'selected="selected"':'').'>Ranged</option>'.
+			'<option value="3" '.($value=='3'?'selected="selected"':'').'>Area of Effect</option>';
 		echo('</select><br/>');
 	}
 	
@@ -872,9 +975,9 @@ function CreateSelectbox($ability_effect_data, $fieldname, $isInputArray=false)
 	{
 		echo($fieldname.': <select id="'.$fieldname.'" name="'.$fieldname.($isInputArray?'[]':'').'">');
 		echo '<option value="0">Select</option>'.
-			'<option value="1" '.($ability_effect_data->ACModVsDamageType=='1'?'selected="selected"':'').'>Slashing</option>'.
-			'<option value="2" '.($ability_effect_data->ACModVsDamageType=='2'?'selected="selected"':'').'>Piercing</option>'.
-			'<option value="3" '.($ability_effect_data->ACModVsDamageType=='3'?'selected="selected"':'').'>Bludgeoning</option>';
+			'<option value="1" '.($value=='1'?'selected="selected"':'').'>Slashing</option>'.
+			'<option value="2" '.($value=='2'?'selected="selected"':'').'>Piercing</option>'.
+			'<option value="3" '.($value=='3'?'selected="selected"':'').'>Bludgeoning</option>';
 		echo('</select><br/>');
 	}
 	
@@ -882,68 +985,68 @@ function CreateSelectbox($ability_effect_data, $fieldname, $isInputArray=false)
 	{
 		echo($fieldname.': <select id="'.$fieldname.'" name="'.$fieldname.($isInputArray?'[]':'').'">');
 		echo '<option value="0">Vs. all directions</option>'.
-			'<option value="1" '.($ability_effect_data->ACModVsDirection=='1'?'selected="selected"':'').'>Only vs. front</option>'.
-			'<option value="2" '.($ability_effect_data->ACModVsDirection=='2'?'selected="selected"':'').'>Only vs. back</option>';
+			'<option value="1" '.($value=='1'?'selected="selected"':'').'>Only vs. front</option>'.
+			'<option value="2" '.($value=='2'?'selected="selected"':'').'>Only vs. back</option>';
 		echo('</select><br/>');
 	}
 	
 	elseif($fieldname == 'EffectsTargetsID')
 	{
 		echo($fieldname.': <select id="'.$fieldname.'" name="'.$fieldname.($isInputArray?'[]':'').'">');
-		echo('<option value="0" '.($ability_effect_data->EffectsTargetsID=='0'?'selected="selected"':'').'>All targets</option>'.
-			'<option value="1" '.($ability_effect_data->EffectsTargetsID=='1'?'selected="selected"':'').'>Only Allies</option>'.
-			'<option value="2" '.($ability_effect_data->EffectsTargetsID=='2'?'selected="selected"':'').'>Only Enemies</option>');
+		echo('<option value="0" '.($value=='0'?'selected="selected"':'').'>All targets</option>'.
+			'<option value="1" '.($value=='1'?'selected="selected"':'').'>Only Allies</option>'.
+			'<option value="2" '.($value=='2'?'selected="selected"':'').'>Only Enemies</option>');
 		echo('</select><br/>');
 	}
 	
 	elseif($fieldname == 'MoveTypeID')
 	{
 		echo($fieldname.': <select id="'.$fieldname.'" name="'.$fieldname.($isInputArray?'[]':'').'">');
-		echo('<option value="0" '.($ability_effect_data->MoveTypeID=='0'?'selected="selected"':'').'>Move</option>'.
-			'<option value="1" '.($ability_effect_data->MoveTypeID=='1'?'selected="selected"':'').'>Swim</option>'.
-			'<option value="2" '.($ability_effect_data->MoveTypeID=='2'?'selected="selected"':'').'>Fly</option>');
+		echo('<option value="0" '.($value=='0'?'selected="selected"':'').'>Move</option>'.
+			'<option value="1" '.($value=='1'?'selected="selected"':'').'>Swim</option>'.
+			'<option value="2" '.($value=='2'?'selected="selected"':'').'>Fly</option>');
 		echo('</select><br/>');
 	}
 	
 	if($fieldname == 'TargetsCreatureTypeID' || $fieldname == 'OnlyEffectsCreatureTypeID' || $fieldname == 'AppliesVsCreatureTypeID')
 	{
 		$dbFieldname = 'CreatureTypeID';
-		GenerateSelectboxFromDB('CreatureTypes', $dbFieldname, 'TypeName', $ability_effect_data->{$fieldname}, $isInputArray, $fieldname);
+		GenerateSelectboxFromDB('CreatureTypes', $dbFieldname, 'TypeName', $value, $isInputArray, $fieldname);
 	}
 	elseif($fieldname == 'TargetsCreatureSubTypeID' || $fieldname == 'OnlyEffectsCreatureSubTypeID' || $fieldname == 'AppliesVsCreatureSubTypeID')
 	{
 		$dbFieldname = 'CreatureSubTypeID';
-		GenerateSelectboxFromDB('CreatureSubTypes', $dbFieldname, 'TypeName', $ability_effect_data->{$fieldname}, $isInputArray, $fieldname);
+		GenerateSelectboxFromDB('CreatureSubTypes', $dbFieldname, 'TypeName', $value, $isInputArray, $fieldname);
 	}
 	elseif($fieldname == 'TargetsCreatureSubTypeID' || $fieldname == 'OnlyEffectsCreatureSubTypeID')
 	{
 		$dbFieldname = 'CreatureSubTypeID';
-		GenerateSelectboxFromDB('CreatureSubTypes', $dbFieldname, 'TypeName', $ability_effect_data->{$fieldname}, $isInputArray, $fieldname);
+		GenerateSelectboxFromDB('CreatureSubTypes', $dbFieldname, 'TypeName', $value, $isInputArray, $fieldname);
 	}
 	elseif($fieldname == 'SaveID')
 	{
-		GenerateSelectboxFromDB('Saves', $fieldname, 'SaveName', $ability_effect_data->{$fieldname}, $isInputArray);
+		GenerateSelectboxFromDB('Saves', $fieldname, 'SaveName', $value, $isInputArray);
 	}
 	elseif($fieldname == 'ActionTypeID')
 	{
 		//3 is the default action type, standard action
-		GenerateSelectboxFromDB('ActionType', $fieldname, 'ActionTypeName', ($ability_effect_data == 0)?3:$ability_effect_data->{$fieldname}, $isInputArray);
+		GenerateSelectboxFromDB('ActionType', $fieldname, 'ActionTypeName', (isset($value))?$value:3, $isInputArray);
 	}
 	elseif($fieldname == 'EffectConditionTypeID')
 	{
-		GenerateSelectboxFromDB('EffectConditionType', $fieldname, 'ConditionName', $ability_effect_data->{$fieldname}, $isInputArray);
+		GenerateSelectboxFromDB('EffectConditionType', $fieldname, 'ConditionName', $value, $isInputArray);
 	}
 	elseif($fieldname == 'AttributeID')
 	{
-		GenerateSelectboxFromDB('Attributes', $fieldname, 'AttributeName', $ability_effect_data->{$fieldname}, $isInputArray);
+		GenerateSelectboxFromDB('Attributes', $fieldname, 'AttributeName', $value, $isInputArray);
 	}
 	elseif($fieldname == 'EffectHPModTypeID')
 	{
-		GenerateSelectboxFromDB('EffectHPModType', $fieldname, 'HPModName', $ability_effect_data->{$fieldname}, $isInputArray);
+		GenerateSelectboxFromDB('EffectHPModType', $fieldname, 'HPModName', $value, $isInputArray);
 	}
 	elseif($fieldname == 'EffectModTypeID')
 	{
-		GenerateSelectboxFromDB('EffectModType', $fieldname, 'ModTypeName', $ability_effect_data->{$fieldname}, $isInputArray);
+		GenerateSelectboxFromDB('EffectModType', $fieldname, 'ModTypeName', $value, $isInputArray);
 	}
 }
 
@@ -960,7 +1063,7 @@ function GenerateSelectboxFromDB($tableName, $fieldID, $fieldName, $default, $is
 	{
 		//if first row value starts at a value of 0, make the default -1 (should have started everything at 1 like auto inc.)
 		if($row->{$fieldID} == 0) $noSelectionID = -1;
-		$html .= '<option value="'.$row->{$fieldID}.'" '.($row->{$fieldID}==$default?'selected="selected"':'').'>'.$row->{$fieldName}.($row->{$fieldName}=='Inherent'?' (stackable)':'').'</option>';
+		$html .= '<option value="'.$row->{$fieldID}.'" '.($row->{$fieldID}==$default?'selected="selected"':'').'>'.$row->$fieldName.($row->$fieldName=='Inherent'?' (stackable)':'').'</option>';
 	}
 	echo $alternateName.': <select id="'.$alternateName.'" name="'.$alternateName.($isInputArray?'[]':'').'">'
 		.'<option value="'.$noSelectionID.'">select</option>'.$html
@@ -999,16 +1102,18 @@ function CreateSubform($fieldname)
 
 <hr/>
 
-<h1><?php echo $title; ?></h1>
+<h1><?php echo $title; ?>
+	<div class="go-button" onclick="EffectController.DeleteAllEffect(<?php echo "'".$effectTypeTable."','".$effectTypeFieldID."',".$effectTypeID; ?>);">DELETE</div>
+</h1>
 
 <hr/>
 
 <form id="frm-effect-multiple">
 	<?php
-		echo 'EffectID: <span class="EffectID">'.($ability_effect->EffectID>0?$ability_effect->EffectID:0).'</span></br>';
+		echo 'EffectID (effects): <span class="EffectID">'.($ability_effect->EffectID>0?$ability_effect->EffectID:0).'</span></br>';
 		
 		echo('<br/>');
-		if($ability_effect != 0)
+		if(is_object($ability_effect))
 		{
 			for($i=0; $i<count($multiple_effects_icon); $i++)
 			{
@@ -1037,13 +1142,13 @@ function CreateSubform($fieldname)
 			<option value="0">Select Effect Type</option>
 			<option value="spells" <?php echo (isset($effectType) && $effectType=='spells')?'selected="selected"':''; ?>>Spells</option>
 			<option value="feat" <?php echo (isset($effectType) && $effectType=='feat')?'selected="selected"':''; ?>>Feat</option>
-			<option value="ability" <?php echo (isset($effectType) && $effectType=='ability')?'selected="selected"':''; ?>>Special Ability</option>
-			<option value="special" <?php echo (isset($effectType) && $effectType=='special')?'selected="selected"':''; ?>>Uncategorised Ability</option>
-			<option value="weapon" <?php echo (isset($effectType) && $effectType=='weapon')?'selected="selected"':''; ?>>weapon</option>
-			<option value="armor" <?php echo (isset($effectType) && $effectType=='armor')?'selected="selected"':''; ?>>armor</option>
-			<option value="equipment" <?php echo (isset($effectType) && $effectType=='equipment')?'selected="selected"':''; ?>>equipment</option>
+			<option value="ability" <?php echo (isset($effectType) && $effectType=='ability')?'selected="selected"':''; ?>>Inherent Ability</option>
+			<option value="special" <?php echo (isset($effectType) && $effectType=='special')?'selected="selected"':''; ?>>NPC/Monster Ability</option>
+			<option value="weapon" <?php echo (isset($effectType) && $effectType=='weapon')?'selected="selected"':''; ?>>Weapon</option>
+			<option value="armor" <?php echo (isset($effectType) && $effectType=='armor')?'selected="selected"':''; ?>>Armor</option>
+			<option value="equipment" <?php echo (isset($effectType) && $effectType=='equipment')?'selected="selected"':''; ?>>Equipment</option>
 		</select>
-	ID: <input type="text" id="effect-type-id" name="effect-type-id" value="<?php echo (isset($effectTypeID))?$effectTypeID:'-1'; ?>"/>
+	ID (subtable): <input type="text" id="effect-type-id" name="effect-type-id" value="<?php echo (isset($effectTypeID))?$effectTypeID:'-1'; ?>"/>
 </form>
 
 <form id="frm-effects-abilities" style="<?php echo (isset($effectType) && ($effectType!='ability' && $effectType!='special' && $effectType!='weapon' && $effectType!='armor' && $effectType!='equipment'))?'display:none;':''; ?>">
@@ -1051,7 +1156,7 @@ function CreateSubform($fieldname)
 	<?php
 		CreateFormInput($ability_effect, 'AbilityEffectTypeID', 0);
 	?>
-	<div class="hide" id="Spell-Like" class="<?php echo $ability_effect->AbilityEffectTypeID!=1?'':'hide'; ?>"><hr/>
+	<div id="Spell-Like" class="<?php echo $ability_effect->AbilityEffectTypeID==1?'':'hide'; ?>"><hr/>
 	SELECT SPELL
 	<?php
 		CreateFormInput($ability_effect, 'SpellID', 0);
@@ -1179,11 +1284,11 @@ function CreateSubform($fieldname)
 <div id="select-icon" class="toggle-menu" style="display:none;">
 	<div id="select-icon-image-list"></div><!--html inserted with JS from GameController.init-->
 	<form id="frm-icon">
-		<input type="hidden" id="icon-path" name="EffectIconName" value="<?php echo($ability_effect->EffectIconName); ?>"/>
+		<input type="hidden" id="icon-path" name="EffectIconName" value="<?php echo(isset($ability_effect->EffectIconName)?$ability_effect->EffectIconName:'battle_icons/effect/status/30.png'); ?>"/>
 	</form>
 </div>
 
-<div id="main-frm" class="toggle-menu">
+<div id="main-frm" class="toggle-menu <?php echo $ability_effect->AbilityEffectTypeID==1?'hide':''; ?>">
 	<form id="frm-effect">
 		<!-- HIDDEN EffectID -->
 		<input type="hidden" class="EffectID" name="EffectID" value="<?php echo($ability_effect->EffectID>0?$ability_effect->EffectID:0); ?>"/> 
@@ -1194,7 +1299,7 @@ function CreateSubform($fieldname)
 			//these effects stack and all are run when ability is activated
 			$fieldname = 'IsMultipleEffectOptions';
 			echo('['.$fieldname.': <input type="checkbox" value="1" ');
-			echo($ability_effect->{$fieldname} == 1)?'checked="checked"':'';
+			echo($ability_effect->$fieldname == 1)?'checked="checked"':'';
 			echo(' id="'.$fieldname.'" name="'.$fieldname.'" ');
 			echo('/>] ');
 			
@@ -1203,7 +1308,7 @@ function CreateSubform($fieldname)
 			//effect is saved to special table as selected class ability, will load with the other class abilities to be usable in ability menu options
 			$fieldname = 'IsChooseClassAbility';
 			echo('['.$fieldname.': <input class="toggle-check" data-toggle-id="'.strToLower($fieldname).'" type="checkbox" value="1" ');
-			echo($ability_effect->{$fieldname} == 1)?'checked="checked"':'';
+			echo($ability_effect->$fieldname == 1)?'checked="checked"':'';
 			echo(' id="'.$fieldname.'" name="'.$fieldname.'" ');
 			echo('/>] ');
 			
@@ -1430,6 +1535,8 @@ function CreateSubform($fieldname)
 				<form id="frm-EffectACMod">
 					<div>Alters Armor Class & Other Defences</div>
 					<br/>
+					VARIABLES NOT SET!
+					<br/>
 					<?php
 					CreateSelectbox(0, 'ACModDRTypeID', true);
 					?>
@@ -1462,7 +1569,7 @@ function CreateSubform($fieldname)
 				</form>
 				
 				<form id="frm-ACModDiceRollPer" class="DiceRoll">
-					AC mod die roll per level: <input type="text" name="NumDice[]" value="<?php echo($EffectACMod->ACModDiceRollPer != 0?$EffectACMod->ACModDiceRollPer->NumDice:'0'); ?>"/>D
+					AC mod die roll per level: <input type="text" name="NumDice[]" value="<?php echo(isset($EffectACMod->ACModDiceRollPer)?$EffectACMod->ACModDiceRollPer->NumDice:'0'); ?>"/>D
 					<input type="text" name="DieType[]" value="0"/>+
 					<input type="text" name="RollMod[]" value="0"/>
 				</form>
@@ -1654,7 +1761,7 @@ function CreateSubform($fieldname)
 	
 	<div id="load-additional-forms">
 		<?php //SHOW LOADED ABILITY SUBFORM DATA
-			if($ability_effect != 0){ ?>
+			if(is_object($ability_effect)){ ?>
 			
 			<?php //ability_effect->EffectArea
 			foreach($ability_effect->EffectArea as $i => $EffectArea) { ?>
@@ -1701,15 +1808,15 @@ function CreateSubform($fieldname)
 				</form>
 				
 				<form id="frm-HPModDiceRollBase" class="DiceRoll">
-					Base die roll: <input type="text" name="NumDice[]" value="<?php echo($EffectHPMod->HPModDiceRollBase != 0?$EffectHPMod->HPModDiceRollBase->NumDice:'0'); ?>"/>D
-					<input type="text" name="DieType[]" value="<?php echo($EffectHPMod->HPModDiceRollBase != 0?$EffectHPMod->HPModDiceRollBase->DieType:'0'); ?>"/>+
-					<input type="text" name="RollMod[]" value="<?php echo($EffectHPMod->HPModDiceRollBase != 0?$EffectHPMod->HPModDiceRollBase->RollMod:'0'); ?>"/>
+					Base die roll: <input type="text" name="NumDice[]" value="<?php echo(is_object($EffectHPMod->HPModDiceRollBase)?$EffectHPMod->HPModDiceRollBase->NumDice:'0'); ?>"/>D
+					<input type="text" name="DieType[]" value="<?php echo(is_object($EffectHPMod->HPModDiceRollBase)?$EffectHPMod->HPModDiceRollBase->DieType:'0'); ?>"/>+
+					<input type="text" name="RollMod[]" value="<?php echo(is_object($EffectHPMod->HPModDiceRollBase)?$EffectHPMod->HPModDiceRollBase->RollMod:'0'); ?>"/>
 				</form>
 
 				<form id="frm-HPModDiceRollPer" class="DiceRoll">
-					Die roll per level<input type="text" name="NumDice[]" value="<?php echo($EffectHPMod->HPModDiceRollPer != 0?$EffectHPMod->HPModDiceRollPer->NumDice:'0'); ?>"/>D
-					<input type="text" name="DieType[]" value="<?php echo($EffectHPMod->HPModDiceRollPer != 0?$EffectHPMod->HPModDiceRollPer->DieType:'0'); ?>"/>+
-					<input type="text" name="RollMod[]" value="<?php echo($EffectHPMod->HPModDiceRollPer != 0?$EffectHPMod->HPModDiceRollPer->RollMod:'0'); ?>"/>
+					Die roll per level<input type="text" name="NumDice[]" value="<?php echo(is_object($EffectHPMod->HPModDiceRollPer)?$EffectHPMod->HPModDiceRollPer->NumDice:'0'); ?>"/>D
+					<input type="text" name="DieType[]" value="<?php echo(is_object($EffectHPMod->HPModDiceRollPer)?$EffectHPMod->HPModDiceRollPer->DieType:'0'); ?>"/>+
+					<input type="text" name="RollMod[]" value="<?php echo(is_object($EffectHPMod->HPModDiceRollPer)?$EffectHPMod->HPModDiceRollPer->RollMod:'0'); ?>"/>
 				</form>
 				<div class="go-button remove-sub-form">remove</div>
 				<hr/>

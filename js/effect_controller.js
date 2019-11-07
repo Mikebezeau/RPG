@@ -1154,8 +1154,33 @@ EffectController.EditMultipleEffect = function(effect_title, effect_type, effect
 	EffectController.LoadEffectEditor(effect_title, effect_type, effect_type_id, ability_rank, effect_index, false)
 }
 
+
+EffectController.DeleteAllEffect = function(effect_type_table, effect_type_field_id, effect_type_id)
+{
+	//$effectTypeTable = 'EffectsAbilities';
+	//$effectTypeFieldID = 'AbilityID';
+	//$effectTypeID
+	//$abilityRank??
+	
+	//deletes all optional effects and main effect
+	if(confirm('Are you sure you want to delete this effect?'))
+	{
+		$.ajax({
+			type: "GET",
+			async: true,
+			url: './effect-gen.php?effecttypetable='+effect_type_table+'&deleteeffectid='+effect_type_id+'&effecttypefieldid='+effect_type_field_id,
+			data: 0
+		}).done(function(result){
+			console.log(result);
+			EffectController.CloseForm();
+			//still need to remove from Special Ability list in editor
+		});
+	}
+}
+
 EffectController.DeleteMultipleEffect = function(effect_type_table, effect_id)
 {
+	//deletes on of the additional optional effects, not main effect
 	if(confirm('Are you sure you want to delete this effect option?'))
 	{
 		$.ajax({
