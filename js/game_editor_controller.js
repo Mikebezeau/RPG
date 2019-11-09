@@ -61,6 +61,7 @@ GameController.init_set_edit_button_events = function()
 		$('#sprite_pic_sample').attr('src',$(this).attr('src'));
 		$('#sprite-images').hide();
 	});
+	
 	//on clicking thumb image, put image in character edit form and put value in hidden input in form
 	$(document).on("click", "#thumb-images img", function()
 	{
@@ -70,15 +71,17 @@ GameController.init_set_edit_button_events = function()
 		$('#thumb_pic_sample').attr('src',$(this).attr('src'));
 		$('#thumb-images').hide();
 	});
-	//edit special abilities
+	
+	//edit special abilities (NPC/Monster)
 	$(document).on("click", ".edit-char-spc .game-menu-item-container-row", function()
 	{
-		if($(this).data('name') == '')
+		var name = $(this).parent().children('.edit-special-name').val()
+		if(name == '')
 		{
 			alert('Enter name');
 			return false;
 		}
-		var title = 'Ability_'+$(this).data('name');
+		var title = 'Ability_'+name;
 		var effecttype = 'special';
 		var id = $(this).data('id');
 		$('#effect-editor-load').html('<h1>LOADING EFFECT EDITOR</h1>');

@@ -1044,8 +1044,9 @@ $(document).ready(function(){
 		else
 		{
 			$('#frm-effects-abilities').hide();
-			$('#AbilityEffectTypeID').val(0);
+			$('#AbilityEffectTypeID').val(0);//resetting this value
 			$('#main-frm').show();
+			$('#Spell-Like').hide();
 		}
 	});
 	
@@ -1154,7 +1155,6 @@ EffectController.EditMultipleEffect = function(effect_title, effect_type, effect
 	EffectController.LoadEffectEditor(effect_title, effect_type, effect_type_id, ability_rank, effect_index, false)
 }
 
-
 EffectController.DeleteAllEffect = function(effect_type_table, effect_type_field_id, effect_type_id)
 {
 	//$effectTypeTable = 'EffectsAbilities';
@@ -1171,7 +1171,6 @@ EffectController.DeleteAllEffect = function(effect_type_table, effect_type_field
 			url: './effect-gen.php?effecttypetable='+effect_type_table+'&deleteeffectid='+effect_type_id+'&effecttypefieldid='+effect_type_field_id,
 			data: 0
 		}).done(function(result){
-			console.log(result);
 			EffectController.CloseForm();
 			//still need to remove from Special Ability list in editor
 		});
@@ -1228,16 +1227,16 @@ EffectController.SaveEffect = function()
 	if(!confirm('Save effect?')) return false;
 
 	var effectarea_data = (typeof $('#load-additional-forms #frm-EffectArea').html() !== 'undefined')?
-		$('#load-additional-forms #frm-EffectArea').serialize() : 0;
+		$('#load-additional-forms #frm-EffectArea').serialize() : 'ignore';
 		
 	var effecthpmod_data = (typeof $('#load-additional-forms #frm-EffectHPMod').html() !== 'undefined')? {
 			data : $('#load-additional-forms #frm-EffectHPMod').serialize(), 
 			dicerollbase : $('#load-additional-forms #frm-HPModDiceRollBase').serialize(), 
 			dicerollper : $('#load-additional-forms #frm-HPModDiceRollPer').serialize()
-		} : {data : 0};
-		
+		} : 'ignore';
+	
 	var effectcondition_data = (typeof $('#load-additional-forms #frm-EffectCondition').html() !== 'undefined')?
-		$('#load-additional-forms #frm-EffectCondition').serialize() : 0;
+		$('#load-additional-forms #frm-EffectCondition').serialize() : 'ignore';
 	
 	var effectattackmod_data = (typeof $('#load-additional-forms #frm-EffectAttackMod').html() !== 'undefined')? {
 			data : $('#load-additional-forms #frm-EffectAttackMod').serialize(), 
@@ -1245,42 +1244,44 @@ EffectController.SaveEffect = function()
 			hitdicerollper : $('#load-additional-forms #frm-HitModDiceRollPer').serialize(),
 			damagedicerollbase : $('#load-additional-forms #frm-DamageModDiceRollBase').serialize(), 
 			damagedicerollper : $('#load-additional-forms #frm-DamageModDiceRollPer').serialize()
-		} : {data : 0};
+		} : 'ignore';
 	
 	var effectacmod_data = (typeof $('#load-additional-forms #frm-EffectACMod').html() !== 'undefined')? {
 			data : $('#load-additional-forms #frm-EffectACMod').serialize(), 
 			acdicerollbase : $('#load-additional-forms #frm-ACModDiceRollBase').serialize(), 
 			acdicerollper : $('#load-additional-forms #frm-ACModDiceRollPer').serialize()
-		} : {data : 0};
+		} : 'ignore';
 	
 	var effectresistanceimmune_data = (typeof $('#load-additional-forms #frm-EffectResistanceImmune').html() !== 'undefined')?
-		$('#load-additional-forms #frm-EffectResistanceImmune').serialize() : 0;
+		$('#load-additional-forms #frm-EffectResistanceImmune').serialize() : 'ignore';
 	
 	var effectattributemod_data = (typeof $('#load-additional-forms #frm-EffectAttributeMod').html() !== 'undefined')?
-		$('#load-additional-forms #frm-EffectAttributeMod').serialize() : 0;
+		$('#load-additional-forms #frm-EffectAttributeMod').serialize() : 'ignore';
 
 	var effectskillmod_data = (typeof $('#load-additional-forms #frm-EffectSkillMod').html() !== 'undefined')?
-		$('#load-additional-forms #frm-EffectSkillMod').serialize() : 0;
+		$('#load-additional-forms #frm-EffectSkillMod').serialize() : 'ignore';
 
 	var effectsavemod_data = (typeof $('#load-additional-forms #frm-EffectSaveMod').html() !== 'undefined')?
-		$('#load-additional-forms #frm-EffectSaveMod').serialize() : 0;
+		$('#load-additional-forms #frm-EffectSaveMod').serialize() : 'ignore';
 
 	var effectmovementmod_data = (typeof $('#load-additional-forms #frm-EffectMovementMod').html() !== 'undefined')?
-		$('#load-additional-forms #frm-EffectMovementMod').serialize() : 0;
+		$('#load-additional-forms #frm-EffectMovementMod').serialize() : 'ignore';
 
 	var effectactionmod_data = (typeof $('#load-additional-forms #frm-EffectActionMod').html() !== 'undefined')?
-		$('#load-additional-forms #frm-EffectActionMod').serialize() : 0;
+		$('#load-additional-forms #frm-EffectActionMod').serialize() : 'ignore';
 
-	var effectsummon_data = (typeof $('#load-additional-forms #frm-EffectSummon').html() !== 'undefined')? {
+	var effectsummon_data = (typeof $('#load-additional-forms #frm-EffectSummon').html() !== 'undefined')?
+		{
 			data : $('#load-additional-forms #frm-EffectSummon').serialize(),
 			summoncreatures : $('#load-additional-forms #frm-EffectSummonCreatures').serialize(),
 			summondicerollbase : $('#load-additional-forms #frm-SummonDiceRollBase').serialize()
-		} : {data : 0};
+		} : 'ignore';
 		
 	var data = {
 			action : 'save-effect', 
 			effecttype : $('#effect-type').val(), 
 			effecttypeid : $('#effect-type-id').val(), 
+			//quickstatid : $('input[name="view_quick_stat_id"]').val(), 
 			effectability : ($('#effect-type').val() == 'ability' || $('#effect-type').val() == 'special')?$('#frm-effects-abilities').serialize():0, 
 			//add data for multiple effects to 'effectdata'
 			effectdata : $('#frm-effect').serialize()+'&'+$('#frm-icon').serialize()+'&'+$('#frm-animation').serialize(),  
@@ -1321,26 +1322,31 @@ EffectController.SaveEffect = function()
 				$("#return-data").html('<div>'+returnData.returnOutput+'</div>');
 				var EffectID=returnData.EffectID
 				$('.EffectID').html(EffectID);
+				var effectTypeID=returnData.effectTypeID;
+				$('#effect-type-id').html(effectTypeID);
 				
-				if(confirm('Saved, close form and reload game menu?'))
+				if(GameController.edit)
+				{
+					EffectController.CloseForm();
+					//***can trigger SAVE character in editor to trigger quickspecial updating
+				}
+				else if(confirm('Saved, close form and reload game menu?'))
 				{
 					EffectController.CloseForm();
 					MenuController.editEffects = 0;
 					$('#toggle-edit-effect').children('div').children('span').html('Edit');
-					if(!GameController.edit)
+					
+					MenuController.MenuClose();
+					if(GameController.in_encounter)
 					{
-						MenuController.MenuClose();
-						if(GameController.in_encounter)
-						{
-							MenuController.BattleReloadMenu();
-						}
-						else
-						{
-							//MenuController.MenuInit(true);
-							//reload only the player whos ability has changed
-						}
-						//reload main menu?
+						MenuController.BattleReloadMenu();
 					}
+					else
+					{
+						//MenuController.MenuInit(true);
+						//reload only the player whos ability has changed
+					}
+					//reload main menu?
 				}
 				
 			}

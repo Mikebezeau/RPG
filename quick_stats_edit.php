@@ -398,7 +398,7 @@ else
 				{
 				?>
 					<div style="clear:both;">
-						<div id="" class='game-menu-item-container-row fltlft' onclick="" data-id="<?php echo $quick_stats->arr_special_id[$i]; ?>" data-name="<?php echo str_replace(' ','_',$quick_stats->arr_special_name[$i]); ?>">
+						<div id="" class='game-menu-item-container-row fltlft' data-id="<?php echo isset($quick_stats->arr_special_id[$i])?$quick_stats->arr_special_id[$i]:0; ?>" data-name="<?php echo isset($quick_stats->arr_special_name[$i])?str_replace(' ','_',$quick_stats->arr_special_name[$i]):''; ?>">
 							<img style='position:absolute; top:0; left:0;' src='images/battle_icons/blank_border.png'/>
 							<img class="spc-abil-icon<?php echo $i;?>" style='position:relative;' src='./images/battle_icons/edit.png'/>
 							<div style='position:relative;'><span style='background-color:#000;'>Edit</span></div>
@@ -407,11 +407,11 @@ else
 						<input type='hidden' name='arr_special_id[]' value='<?php 
 							echo(isset($quick_stats->arr_special_id[$i]) ? $quick_stats->arr_special_id[$i] : '');?>'/>
 						
-						<input type='text' name='arr_special_name[]' value='<?php 
+						<input type='text' class="edit-special-name" name='arr_special_name[]' value='<?php 
 							echo(isset($quick_stats->arr_special_name[$i]) ? $quick_stats->arr_special_name[$i] : '');
 							?>' size='10' maxsize='20' />
 						
-						<input type='text' name='arr_special_description[]' value='<?php
+						<input type='text' class="edit-special-description" name='arr_special_description[]' value='<?php
 							echo(isset($quick_stats->arr_special_description[$i]) ? $quick_stats->arr_special_description[$i] : '');
 							?>' size='25' maxsize='100' />
 						<br/>

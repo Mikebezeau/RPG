@@ -138,7 +138,7 @@ if(isset($_REQUEST['effecttype']))
 			case 'ability':
 				$effectTypeTable = 'EffectsAbilities';
 				$effectTypeFieldID = 'AbilityID';
-				//$abilityRank = isset($_REQUEST['abilityrank']) ? $_REQUEST['abilityrank'] : 0;
+				$abilityRank = isset($_REQUEST['abilityrank']) ? $_REQUEST['abilityrank'] : 0;
 				break;
 				
 			case 'special':
@@ -196,39 +196,63 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		
 	parse_str($_POST['effectdata'], $effectdata);
 	
-	parse_str($_POST['effectarea'], $effectAreaData);
+	if($_POST['effectarea'] == 'ignore') $effectAreaData = 0;
+	else parse_str($_POST['effectarea'], $effectAreaData);
 	
-	parse_str($_POST['effecthpmod']['data'], $effectHPmodData);
-	parse_str($_POST['effecthpmod']['dicerollbase'], $effectHPmodBaseDice);
-	parse_str($_POST['effecthpmod']['dicerollper'], $effectHPmodDicePer);
+	if($_POST['effecthpmod'] == 'ignore') $effectHPmodData = 0;
+	else
+	{
+		parse_str($_POST['effecthpmod']['data'], $effectHPmodData);
+		parse_str($_POST['effecthpmod']['dicerollbase'], $effectHPmodBaseDice);
+		parse_str($_POST['effecthpmod']['dicerollper'], $effectHPmodDicePer);
+	}
 	
-	parse_str($_POST['effectcondition'], $effectConditionData);
+	if($_POST['effectcondition'] == 'ignore') $effectConditionData = 0;
+	else parse_str($_POST['effectcondition'], $effectConditionData);
 	
-	parse_str($_POST['effectattackmod']['data'], $effectAttackModData);
-	parse_str($_POST['effectattackmod']['hitdicerollbase'], $HitModDiceRollBase);
-	parse_str($_POST['effectattackmod']['hitdicerollper'], $HitModDiceRollPer);
-	parse_str($_POST['effectattackmod']['damagedicerollbase'], $DamageModDiceRollBase);
-	parse_str($_POST['effectattackmod']['damagedicerollper'], $DamageModDiceRollPer);
+	if($_POST['effectattackmod'] == 'ignore') $effectAttackModData = 0;
+	else
+	{
+		parse_str($_POST['effectattackmod']['data'], $effectAttackModData);
+		parse_str($_POST['effectattackmod']['hitdicerollbase'], $HitModDiceRollBase);
+		parse_str($_POST['effectattackmod']['hitdicerollper'], $HitModDiceRollPer);
+		parse_str($_POST['effectattackmod']['damagedicerollbase'], $DamageModDiceRollBase);
+		parse_str($_POST['effectattackmod']['damagedicerollper'], $DamageModDiceRollPer);
+	}
 	
-	parse_str($_POST['effectacmod']['data'], $EffectACModData);
-	parse_str($_POST['effectacmod']['acdicerollbase'], $ACModDiceRollBase);
-	parse_str($_POST['effectacmod']['acdicerollper'], $ACModDiceRollPer);
+	if($_POST['effectacmod'] == 'ignore') $EffectACModData = 0;
+	else
+	{
+		parse_str($_POST['effectacmod']['data'], $EffectACModData);
+		parse_str($_POST['effectacmod']['acdicerollbase'], $ACModDiceRollBase);
+		parse_str($_POST['effectacmod']['acdicerollper'], $ACModDiceRollPer);
+	}
 	
-	parse_str($_POST['effectresistanceimmune'], $EffectResistanceImmuneData);
+	if($_POST['effectresistanceimmune'] == 'ignore') $EffectResistanceImmuneData = 0;
+	else parse_str($_POST['effectresistanceimmune'], $EffectResistanceImmuneData);
 	
-	parse_str($_POST['effectattributemod'], $EffectAttributeModData);
+	if($_POST['effectattributemod'] == 'ignore') $EffectAttributeModData = 0;
+	else parse_str($_POST['effectattributemod'], $EffectAttributeModData);
 	
-	parse_str($_POST['effectskillmod'], $EffectSkillModData);
+	if($_POST['effectskillmod'] == 'ignore') $EffectSkillModData = 0;
+	else parse_str($_POST['effectskillmod'], $EffectSkillModData);
 	
-	parse_str($_POST['effectsavemod'], $EffectSaveModData);
+	if($_POST['effectsavemod'] == 'ignore') $EffectSaveModData = 0;
+	else parse_str($_POST['effectsavemod'], $EffectSaveModData);
 	
-	parse_str($_POST['effectmovementmod'], $EffectMovementModData);
+	if($_POST['effectmovementmod'] == 'ignore') $EffectMovementModData = 0;
+	else parse_str($_POST['effectmovementmod'], $EffectMovementModData);
 	
-	parse_str($_POST['effectactionmod'], $EffectActionModData);
+	if($_POST['effectactionmod'] == 'ignore') $EffectActionModData = 0;
+	else parse_str($_POST['effectactionmod'], $EffectActionModData);
 	
-	parse_str($_POST['effectsummon']['data'], $EffectSummon);
-	parse_str($_POST['effectsummon']['summoncreatures'], $EffectSummonCreatures);
-	parse_str($_POST['effectsummon']['summondicerollbase'], $SummonDiceRollBase);
+	if($_POST['effectsummon'] == 'ignore') $EffectSummon = 0;
+	else
+	{
+		parse_str($_POST['effectsummon']['data'], $EffectSummon);
+		parse_str($_POST['effectsummon']['summoncreatures'], $EffectSummonCreatures);
+		parse_str($_POST['effectsummon']['summondicerollbase'], $SummonDiceRollBase);
+	}
 	
 	//-------------------------------------
 	
@@ -306,8 +330,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		
 		//Effects*Type*
 		//$returnData['count($effectability)'] = count($effectability);
-		if(count($effectability) > 1)
+		if(count($effectability) > 1)//if there are more then 1 data feilds 
 		{
+			//IF SPECIAL MUST INSERT INTO quickspecial TABLE
+			//DO HERE INSTEAD OF ON CHARACTER SAVE like it is now >.<
+			/*
+			if($effectType == 'special' && $effectTypeID == 0)//insert into quickspecial
+			{
+				$insertQuery = "INSERT INTO QuickSpecial... $effectTypeID
+				if(!$result = mysqli_query($link,$insertQuery)) $returnData['errors'] = mysqli_error($link);
+				
+				$QuickSpecialID = mysqli_insert_id($link);
+				
+			}
+			*/
+			
 			//$returnData['effectability'] = $effectability;
 			//$returnData['queries'][] = 
 			//echo 
@@ -323,6 +360,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			{
 				$returnData['errors'] = mysqli_error($link);
 			}
+			
 		}
 		else
 		{
@@ -331,8 +369,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			if(!$result = mysqli_query($link,$insertQuery)) $returnData['errors'] = mysqli_error($link);
 		}
 		
-		$EffectAreaID = 'NULL';
-		if($effectAreaData['EffectAreaTypeID'] !== null)
+		$EffectAreaID = 0;
+		if($effectAreaData != 0)
 		{
 			foreach($effectAreaData['EffectAreaTypeID'] as $i => $value)
 			{
@@ -343,11 +381,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				$insertQuery = "INSERT INTO EffectArea (EffectID, EffectAreaTypeID, EffectAreaSizeBase, EffectAreaSizePer) VALUES ('$EffectID', '$EffectAreaTypeID', '$EffectAreaSizeBase', '$EffectAreaSizePer')";
 				if(!$result = mysqli_query($link,$insertQuery)) $returnData['errors'] = mysqli_error($link);
 			}
-			$EffectAreaID = mysqli_insert_id($link);
+			$EffectAreaID = mysqli_insert_id($link);//as long as ID is > 0 will search for all entries for this EffectID
 		}
 		
-		$EffectHPModID = 'NULL';
-		if($effectHPmodData['EffectHPModTypeID'] !== null)
+		$EffectHPModID = 0;
+		if($effectHPmodData !== 0)
 		{
 			//$returnData['queries']['EffectHPModTypeID'] = $effectHPmodData['EffectHPModTypeID'];
 			
@@ -388,8 +426,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			$EffectHPModID = mysqli_insert_id($link);
 		}
 		
-		$EffectConditionID = 'NULL';
-		if($effectConditionData['EffectConditionTypeID'] !== null)
+		$EffectConditionID = 0;
+		if($effectConditionData !== 0)
 		{
 			foreach($effectConditionData['EffectConditionTypeID'] as $i => $value)
 			{
@@ -402,8 +440,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			$EffectConditionID = mysqli_insert_id($link);
 		}
 		
-		$EffectAttackModID = 'NULL';
-		if($effectAttackModData['EffectHPModTypeID'] !== null)
+		$EffectAttackModID = 0;
+		if($effectAttackModData !== 0)
 		{
 			//$returnData['queries']['EffectHPModTypeID'] = $effectAttackModData['EffectHPModTypeID'];
 			
@@ -480,8 +518,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			$EffectAttackModID = mysqli_insert_id($link);
 		}
 		
-		$EffectACModID = 'NULL';
-		if($EffectACModData['ACModAttributeID'] !== null)
+		$EffectACModID = 0;
+		if($EffectACModData !== 0)
 		{
 			foreach($EffectACModData['ACModAttributeID'] as $i => $value)
 			{
@@ -535,8 +573,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			$EffectACModID = mysqli_insert_id($link);
 		}
 		
-		$EffectResistanceImmuneID = 'NULL';
-		if($EffectResistanceImmuneData['EffectHPModTypeID'] !== null)
+		$EffectResistanceImmuneID = 0;
+		if($EffectResistanceImmuneData !== 0)
 		{
 			foreach($EffectResistanceImmuneData['EffectHPModTypeID'] as $i => $value)
 			{
@@ -554,8 +592,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			$EffectResistanceImmuneID = mysqli_insert_id($link);
 		}
 		
-		$EffectAttributeModID = 'NULL';
-		if($EffectAttributeModData['AttributeID'] !== null)
+		$EffectAttributeModID = 0;
+		if($EffectAttributeModData !== 0)
 		{
 			foreach($EffectAttributeModData['AttributeID'] as $i => $value)
 			{
@@ -571,8 +609,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			$EffectAttributeModID = mysqli_insert_id($link);
 		}
 		
-		$EffectSkillModID = 'NULL';
-		if($EffectSkillModData['SkillID'] !== null)
+		$EffectSkillModID = 0;
+		if($EffectSkillModData !== 0)
 		{
 			//EffectAttributeMod
 			foreach($EffectSkillModData['SkillID'] as $i => $value)
@@ -588,8 +626,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			$EffectSkillModID = mysqli_insert_id($link);
 		}
 		
-		$EffectSaveModID = 'NULL';
-		if($EffectSaveModData['SaveID'] !== null)
+		$EffectSaveModID = 0;
+		if($EffectSaveModData !== 0)
 		{
 			foreach($EffectSaveModData['SaveID'] as $i => $value)
 			{
@@ -605,8 +643,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			$EffectSaveModID = mysqli_insert_id($link);
 		}
 		
-		$EffectMovementModID = 'NULL';
-		if($EffectMovementModData['MovementMod'] !== null)
+		$EffectMovementModID = 0;
+		if($EffectMovementModData !== 0)
 		{
 			foreach($EffectMovementModData['MovementMod'] as $i => $value)
 			{
@@ -624,8 +662,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			$EffectMovementModID = mysqli_insert_id($link);
 		}
 		
-		$EffectActionModID = 'NULL';
-		if($EffectActionModData['ActionMod'] !== null)
+		$EffectActionModID = 0;
+		if($EffectActionModData !== 0)
 		{
 			foreach($EffectActionModData['ActionMod'] as $i => $value)
 			{
@@ -638,8 +676,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		}
 		
 		//EffectSummon - EffectSummonCreatures
-		$EffectSummonID = 'NULL';
-		if($EffectSummonCreatures['SummonSuccessChance'] !== null)
+		$EffectSummonID = 0;
+		if($EffectSummon !== 0)
 		{
 			$IsPolymorph = isset($EffectSummon['IsPolymorph']) ? 1 : 0;
 			$IsFamiliar = isset($EffectSummon['IsFamiliar']) ? 1 : 0;
@@ -669,39 +707,52 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		}
 		
 		//update references in Effects entry
+		
 		//EffectAreaID
+		//DONT NEED TO PUT ACTUAL EffectAreaID IN RECORD, SEARCH IS BASED ON EffectID SO LONG AS EffectAreaID > 0
 		$updateQuery = "UPDATE Effects SET EffectAreaID = $EffectAreaID WHERE EffectID = $EffectID";
 		if(!$result = mysqli_query($link,$updateQuery)) $returnData['errors'] = mysqli_error($link);
+		
 		//EffectHPModID
 		$updateQuery = "UPDATE Effects SET EffectHPModID = $EffectHPModID WHERE EffectID = $EffectID";
 		if(!$result = mysqli_query($link,$updateQuery)) $returnData['errors'] = mysqli_error($link);
+		
 		//EffectConditionID
 		$updateQuery = "UPDATE Effects SET EffectConditionID = $EffectConditionID WHERE EffectID = $EffectID";
 		if(!$result = mysqli_query($link,$updateQuery)) $returnData['errors'] = mysqli_error($link);
+		
 		//EffectAttackModID
 		$updateQuery = "UPDATE Effects SET EffectAttackModID = $EffectAttackModID WHERE EffectID = $EffectID";
 		if(!$result = mysqli_query($link,$updateQuery)) $returnData['errors'] = mysqli_error($link);
+		
 		//EffectACModID
 		$updateQuery = "UPDATE Effects SET EffectACModID = $EffectACModID WHERE EffectID = $EffectID";
 		if(!$result = mysqli_query($link,$updateQuery)) $returnData['errors'] = mysqli_error($link);
+		
 		//EffectResistanceImmuneID
 		$updateQuery = "UPDATE Effects SET EffectResistanceImmuneID = $EffectResistanceImmuneID WHERE EffectID = $EffectID";
 		if(!$result = mysqli_query($link,$updateQuery)) $returnData['errors'] = mysqli_error($link);
+		
 		//EffectAttributeModID
 		$updateQuery = "UPDATE Effects SET EffectAttributeModID = $EffectAttributeModID WHERE EffectID = $EffectID";
 		if(!$result = mysqli_query($link,$updateQuery)) $returnData['errors'] = mysqli_error($link);
+		
 		//EffectSkillModID
 		$updateQuery = "UPDATE Effects SET EffectSkillModID = $EffectSkillModID WHERE EffectID = $EffectID";
 		if(!$result = mysqli_query($link,$updateQuery)) $returnData['errors'] = mysqli_error($link);
+		
 		//EffectSaveModID
 		$updateQuery = "UPDATE Effects SET EffectSaveModID = $EffectSaveModID WHERE EffectID = $EffectID";
 		if(!$result = mysqli_query($link,$updateQuery)) $returnData['errors'] = mysqli_error($link);
+		
 		//EffectMovementModID
 		$updateQuery = "UPDATE Effects SET EffectMovementModID = $EffectMovementModID WHERE EffectID = $EffectID";
 		if(!$result = mysqli_query($link,$updateQuery)) $returnData['errors'] = mysqli_error($link);
+		
 		//EffectActionModID
 		$updateQuery = "UPDATE Effects SET EffectActionModID = $EffectActionModID WHERE EffectID = $EffectID";
 		if(!$result = mysqli_query($link,$updateQuery)) $returnData['errors'] = mysqli_error($link);
+		
 		//EffectSummonID
 		$updateQuery = "UPDATE Effects SET EffectSummonID = $EffectSummonID WHERE EffectID = $EffectID";
 		if(!$result = mysqli_query($link,$updateQuery)) $returnData['errors'] = mysqli_error($link);
@@ -721,6 +772,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	//end
 	mysqli_close($link);
 	$returnData['EffectID'] = $EffectID;
+	$returnData['effectTypeID'] = $effectTypeID;
 	echo json_encode($returnData);
 	exit;
 }
@@ -861,7 +913,7 @@ function CreateFormInput($ability_effect_data, $fieldname, $defaultValue, $isInp
 	//hidden select boxes
 	elseif($fieldname == 'SaveID')
 	{
-		echo'<div class="'.($ability_effect_data->IsAllowSave?'':'hide').'" id="toggle-isallowsave">';
+		echo'<div class="'.(isset($ability_effect_data->IsAllowSave) && $ability_effect_data->IsAllowSave?'':'hide').'" id="toggle-isallowsave">';
 		CreateSelectbox($ability_effect_data, $fieldname, $isInputArray);
 		echo'</div>';
 	}
@@ -1110,7 +1162,7 @@ function CreateSubform($fieldname)
 
 <form id="frm-effect-multiple">
 	<?php
-		echo 'EffectID (effects): <span class="EffectID">'.($ability_effect->EffectID>0?$ability_effect->EffectID:0).'</span></br>';
+		echo 'EffectID (effects): <span class="EffectID">'.(isset($ability_effect->EffectID)?$ability_effect->EffectID:0).'</span></br>';
 		
 		echo('<br/>');
 		if(is_object($ability_effect))
@@ -1294,7 +1346,7 @@ function CreateSubform($fieldname)
 		<input type="hidden" class="EffectID" name="EffectID" value="<?php echo($ability_effect->EffectID>0?$ability_effect->EffectID:0); ?>"/> 
 		<?php
 		
-		echo '<div id="toggle-multiple_effects" class="'.((count($multiple_effects_icon) > 1 || $ability_effect->IsMultipleEffectOptions == 1 || $ability_effect->IsChooseClassAbility == 1)?'':'hide').'">';
+		echo '<div id="toggle-multiple_effects" class="'.(isset($ability_effect->IsMultipleEffectOptions) && (count($multiple_effects_icon) > 1 || $ability_effect->IsMultipleEffectOptions == 1 || $ability_effect->IsChooseClassAbility == 1)?'':'hide').'">';
 			
 			//these effects stack and all are run when ability is activated
 			$fieldname = 'IsMultipleEffectOptions';
@@ -1351,32 +1403,32 @@ function CreateSubform($fieldname)
 						CreateFormInput($ability_effect, 'EffectsTargetsID', 0);
 						
 						echo('[Can Only Target, Effect, or Apply Vs. A Specific Creature Type: <input class="toggle-check" data-toggle-id="creature-types" type="checkbox" value="1" ');
-						echo($ability_effect->TargetsCreatureTypeID != 0 || $ability_effect->TargetsCreatureSubTypeID != 0 || $ability_effect->OnlyEffectsCreatureTypeID != 0 || $ability_effect->OnlyEffectsCreatureSubTypeID != 0 || $ability_effect->AppliesVsCreatureTypeID != 0 || $ability_effect->AppliesVsCreatureSubTypeID != 0 )?'checked="checked"':'';
+						echo(isset($ability_effect->TargetsCreatureTypeID) && ($ability_effect->TargetsCreatureTypeID != 0 || $ability_effect->TargetsCreatureSubTypeID != 0 || $ability_effect->OnlyEffectsCreatureTypeID != 0 || $ability_effect->OnlyEffectsCreatureSubTypeID != 0 || $ability_effect->AppliesVsCreatureTypeID != 0 || $ability_effect->AppliesVsCreatureSubTypeID != 0 )?'checked="checked"':'');
 						echo('/>] ');
-						echo'<div id="toggle-creature-types" class="'.($ability_effect->TargetsCreatureTypeID != 0 ||$ability_effect->TargetsCreatureSubTypeID != 0 || $ability_effect->OnlyEffectsCreatureTypeID != 0 || $ability_effect->OnlyEffectsCreatureSubTypeID != 0 || $ability_effect->AppliesVsCreatureTypeID != 0 || $ability_effect->AppliesVsCreatureSubTypeID != 0 ?'':'hide').'">';
+						echo'<div id="toggle-creature-types" class="'.(isset($ability_effect->TargetsCreatureTypeID) && ($ability_effect->TargetsCreatureTypeID != 0 ||$ability_effect->TargetsCreatureSubTypeID != 0 || $ability_effect->OnlyEffectsCreatureTypeID != 0 || $ability_effect->OnlyEffectsCreatureSubTypeID != 0 || $ability_effect->AppliesVsCreatureTypeID != 0 || $ability_effect->AppliesVsCreatureSubTypeID != 0)?'':'hide').'">';
 							echo('[Can Target Only Specific Creature Type: <input class="toggle-check" data-toggle-id="targets-creature-types" type="checkbox" value="1" ');
-							echo($ability_effect->TargetsCreatureTypeID||$ability_effect->TargetsCreatureSubTypeID)?'checked="checked"':'';
+							echo(isset($ability_effect->TargetsCreatureTypeID) && ($ability_effect->TargetsCreatureTypeID||$ability_effect->TargetsCreatureSubTypeID)?'checked="checked"':'');
 							echo('/>] ');
 							
-							echo'<div id="toggle-targets-creature-types" class="'.($ability_effect->TargetsCreatureTypeID != 0 ||$ability_effect->TargetsCreatureSubTypeID != 0 ?'':'hide').'">';
+							echo'<div id="toggle-targets-creature-types" class="'.(isset($ability_effect->TargetsCreatureTypeID) && ($ability_effect->TargetsCreatureTypeID != 0 ||$ability_effect->TargetsCreatureSubTypeID != 0)?'':'hide').'">';
 							CreateFormInput($ability_effect, 'TargetsCreatureTypeID', 0);
 							CreateFormInput($ability_effect, 'TargetsCreatureSubTypeID', 0);
 							echo'</div><br/>';
 							
 							echo('[Only Effects Specific Creature Type: <input class="toggle-check" data-toggle-id="effects-creature-types" type="checkbox" value="1" ');
-							echo($ability_effect->OnlyEffectsCreatureTypeID != 0 ||$ability_effect->OnlyEffectsCreatureSubTypeID != 0 )?'checked="checked"':'';
+							echo(isset($ability_effect->OnlyEffectsCreatureTypeID) && ($ability_effect->OnlyEffectsCreatureTypeID != 0 ||$ability_effect->OnlyEffectsCreatureSubTypeID != 0 )?'checked="checked"':'');
 							echo('/>] ');
 							
-							echo'<div id="toggle-effects-creature-types" class="'.($ability_effect->OnlyEffectsCreatureTypeID != 0 ||$ability_effect->OnlyEffectsCreatureSubTypeID != 0 ?'':'hide').'">';
+							echo'<div id="toggle-effects-creature-types" class="'.(isset($ability_effect->OnlyEffectsCreatureTypeID) && ($ability_effect->OnlyEffectsCreatureTypeID != 0 ||$ability_effect->OnlyEffectsCreatureSubTypeID != 0)?'':'hide').'">';
 							CreateFormInput($ability_effect, 'OnlyEffectsCreatureTypeID', 0);
 							CreateFormInput($ability_effect, 'OnlyEffectsCreatureSubTypeID', 0);
 							echo'</div><br/>';
 							
 							echo('[Effects Only Apply Vs. Specific Creature Type: <input class="toggle-check" data-toggle-id="applies-to-creature-types" type="checkbox" value="1" ');
-							echo($ability_effect->AppliesVsCreatureTypeID != 0 ||$ability_effect->AppliesVsCreatureSubTypeID != 0 )?'checked="checked"':'';
+							echo(isset($ability_effect->AppliesVsCreatureTypeID) && ($ability_effect->AppliesVsCreatureTypeID != 0 ||$ability_effect->AppliesVsCreatureSubTypeID != 0)?'checked="checked"':'');
 							echo('/>] ');
 							
-							echo'<div id="toggle-applies-to-creature-types" class="'.($ability_effect->AppliesVsCreatureTypeID != 0 ||$ability_effect->AppliesVsCreatureSubTypeID != 0 ?'':'hide').'">';
+							echo'<div id="toggle-applies-to-creature-types" class="'.(isset($ability_effect->AppliesVsCreatureTypeID) && ($ability_effect->AppliesVsCreatureTypeID != 0 ||$ability_effect->AppliesVsCreatureSubTypeID != 0)?'':'hide').'">';
 							CreateFormInput($ability_effect, 'AppliesVsCreatureTypeID', 0);
 							CreateFormInput($ability_effect, 'AppliesVsCreatureSubTypeID', 0);
 							echo'</div><br/>';
