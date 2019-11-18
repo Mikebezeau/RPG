@@ -193,8 +193,9 @@ body{
 }
 
 .intro-screen-bg{
+	background-image:URL('../images/title/title.jpg');
 	/*background-image:URL('../images/title/fog.png');*/
-	background-image:URL('../images/title/godstone2.jpg');
+	/*background-image:URL('../images/title/godstone2.jpg');*/
 	background-position: 0 72px;
 	background-size: 100%;
 	background-repeat: no-repeat;
