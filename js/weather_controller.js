@@ -20,7 +20,7 @@ WeatherController=
 	'loaded': 0
 }
 
-WeatherController.init = function()
+WeatherController.init = function() //called in 'GameController.init'
 {
 	if(window.mobile) return false;
 	

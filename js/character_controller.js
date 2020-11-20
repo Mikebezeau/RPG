@@ -862,9 +862,13 @@ var CharacterController = {
 						$(e).css('width', width+'px');
 						$(e).css('margin', '10px');
 					}
-					$('#create-character-page img').load(function(){
+					
+					$("#create-character-page img").on('load', function() {
 						resize_element(this);
+					}).each(function() {
+						if(this.complete) $(this).trigger('load');
 					});
+					
 					$('#create-character-page img').click(function(){
 						CharacterController.ClickSprite(this);
 					});

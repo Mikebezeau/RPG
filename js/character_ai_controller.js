@@ -259,6 +259,8 @@ CharacterAiController.GetAiAction = function(character_index)
 	var attack_action_index = -1;
 	CharacterAiController.character = GameController.characters[character_index];//-----------------
 	var aiIndex = CharacterAiController.character.character_stats.character_name.toLowerCase();
+	
+	//MOVE THIS CHUNK TO MONSTER TYPE ABOVE
 	if(typeof CharacterAiController[aiIndex] != 'undefined')
 	{
 		//special find target//i.e. agro, or focusing on one target

@@ -1,7 +1,7 @@
 
 var FormationController = FormationController || {};
 
-FormationController.Init = function()
+FormationController.Init = function() //called in 'GameController.init'
 {
 	//vars
 	
