@@ -305,7 +305,7 @@
 					$this->EquipArr[] = $row;
 				}
 			}
-		} //end get_all_data
+		} //end get_all_pc_data
 
 		//get data from all tables
 		public function get_all_data($link, $character_id, $player_character_id = -1)
@@ -398,7 +398,7 @@
 			}
 		} //end get_data_master_character
 	
-		//STATS
+		//get PCCharacterInfo
 		public function get_data_character_pc_world($link, $character_id, $player_character_id)
 		{
 			//getting Player specific data for their world

@@ -12,7 +12,7 @@ $_POST = json_decode($_POST['data'], true);
 
 $AreaID = $_POST["AreaID"];
 
-$full_pic_id = -1;//not using this really anymore
+$full_pic_id = 0;//not using this really anymore (unsigned value)
 
 include_once("../classes/Quick_Stat.php");
 $character_stats = new Quick_Stat();
@@ -104,7 +104,7 @@ else
 		
 		//MASTER CHARACTER***********************
 		//insert new character into MasterCharacter
-		$query = "INSERT INTO MasterCharacter (AreaID, PlayerID, CharacterID, QuickStatID, CatagoryID, ListRank, CharacterName, HPDamage, ArcaneSPUsed, DivineSPUsed, Description, Xpos, Ypos, SpriteID, ThumbPicID, PortraitPicID, FullPicID)
+		$check_query = $query = "INSERT INTO MasterCharacter (AreaID, PlayerID, CharacterID, QuickStatID, CatagoryID, ListRank, CharacterName, HPDamage, ArcaneSPUsed, DivineSPUsed, Description, Xpos, Ypos, SpriteID, ThumbPicID, PortraitPicID, FullPicID)
 			VALUES
 			($AreaID, 99, ".$character_id.", ".$quick_stat_id.", ".$quick_stat_catagory_id.", 0, '".$name."', 0, 0, 0, '', ".$_POST["x"].", ".$_POST["y"].", ".$sprite_id.", ".$thumb_pic_id.", 0, ".$full_pic_id.")";
 		$result = mysqli_query($link,$query);
@@ -120,6 +120,7 @@ else
 	$character_stats->get_all_data($link, $character_id);
 	mysqli_close($link);
 	echo(json_encode($character_stats));
+	//echo($check_query);
 	exit;
 }
 ?>

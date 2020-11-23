@@ -11,7 +11,7 @@ if(!function_exists('EffectQuery'))
 
 //CHARACTER INFO *****************************************************
 //Prepare Query for characteres table
-$query = 'SELECT * FROM MasterCharacter INNER JOIN 
+$check_query = $query = 'SELECT * FROM MasterCharacter INNER JOIN 
 		(Races INNER JOIN 
 			(Characters INNER JOIN Sizes
 				ON Characters.SizeID = Sizes.SizeID)

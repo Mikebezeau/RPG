@@ -30,8 +30,8 @@
 		$character_id = $IDrow->CharacterID + 1;
 		
 		//insert character info into db 
-		//$data['queries']['Characters'] = 
-		$query = "INSERT INTO Characters (CharacterID, RaceID, FavoredHP, FavoredSkill, Gender, AlignGoodID, AlignChaosID, Height, Weight, Age, Deity, Occupation, FactionID, CMDmod, BullRushB, DisarmB, GrappleB, SunderB, TripB, FeintB, CMBmod, BullRushD, DisarmD, GrappleD, SunderD, TripD, FeintD,DodgeBonus, InitBonus, NaturalAC, DeflectAC, DamageResist, SpellResist, ASPbonus, DSPbonus) VALUES (".$character_id.", '".$_POST["race"]."', 0, 0, '".$_POST["gender"]."', 0, 0,'', '', 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0)";
+		$data['queries']['Characters'] = 
+		$query = "INSERT INTO Characters (CharacterID, RaceID, FavoredHP, FavoredSkill, SizeID, Gender, AlignGoodID, AlignChaosID, Height, Weight, Age, Deity, Occupation, FactionID, CMDmod, BullRushB, DisarmB, GrappleB, SunderB, TripB, FeintB, CMBmod, BullRushD, DisarmD, GrappleD, SunderD, TripD, FeintD,DodgeBonus, InitBonus, NaturalAC, DeflectAC, DamageResist, SpellResist, ASPbonus, DSPbonus) VALUES (".$character_id.", '".$_POST["race"]."', 0, 0, 0, '".$_POST["gender"]."', 0, 0,'', '', 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0)";
 		//perform query
 		$result = mysqli_query($link,$query);
 		$data['queries']['Characters Error'] = mysqli_error($link);
@@ -130,9 +130,12 @@
 			if($armornotes == "notes") { $armornotes = ""; }
 			//new armor has been selected
 			//delete old armor from CharacterArmor
-			$query = "DELETE FROM CharacterArmor WHERE CharacterID=".$character_id." AND ArmorID=".$_POST["armorid"];
-			// Perform Query
-			$result = mysqli_query($link,$query);
+			if(isset($_POST["armorid"]))
+			{
+				$query = "DELETE FROM CharacterArmor WHERE CharacterID=".$character_id." AND ArmorID=".$_POST["armorid"];
+				// Perform Query
+				$result = mysqli_query($link,$query);
+			}
 			//insert new armor
 			$query = "INSERT INTO CharacterArmor (ArmorID, CharacterID, Enhance, MW, Equipped, ACMod, Notes)
 					VALUES (".$armorid_new.", ".$character_id.", FALSE, 0, TRUE, ".$armorenhance_new.", '".$armornotes."')";

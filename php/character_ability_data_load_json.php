@@ -238,7 +238,8 @@ echo json_encode(array(
 	'class'=>$class,
 	'faction'=>$faction,
 	'feat'=>$feat,
-	'spells'=>$spells
+	'spells'=>$spells,
+	'query'=>$check_query
 ));
 
 mysqli_close($link);

@@ -126,8 +126,13 @@ $recurse = false;
 		elseif(is_readable("$dir$entry"))
 		{
 			$id = (int)str_replace('charthumb_','',(str_replace('.png','',$entry)));
-			if($gender == '' || (isset($thumbTag[$id]) && ($gender == 'm' && $thumbTag[$id] == 'm') ||($gender == 'f' && $thumbTag[$id] == 'f')))
-				echo '<img data-id="'.$id.'" style="background-color:#fff; margin:10px; overflow:hidden; border-radius:5px;" src="'.(str_replace('../.','',$dir)).$entry.'"/>';
+			if(isset($thumbTag[$id]))
+			{
+				if($gender == '' || (isset($thumbTag[$id]) && ($gender == 'm' && $thumbTag[$id] == 'm') ||($gender == 'f' && $thumbTag[$id] == 'f')))
+				{
+					echo '<img data-id="'.$id.'" style="background-color:#fff; margin:10px; overflow:hidden; border-radius:5px;" src="'.(str_replace('../.','',$dir)).$entry.'"/>';
+				}
+			}
 		}
 	}
 	$d->close();
