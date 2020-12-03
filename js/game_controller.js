@@ -94,7 +94,7 @@ GameController=
 	},
 	'player_move_duration_countdown': 0,
 	'smooth_move_distance': 0,
-	'distance_per_smooth_move': 16,
+	'distance_per_smooth_move': 11,
 	'smooth_move_interval': 0,
 	'mobile_continuous_move': 0,
 	'player_look': 0,

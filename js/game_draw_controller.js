@@ -27,10 +27,10 @@ GameController.SmoothMove = function()
 	}
 	var shift_map_x = 0;
 	var shift_map_y = 0;
-	if(game.smooth_move_direction == 'up') shift_map_y = game.distance_per_smooth_move * game.map_scale;
-	if(game.smooth_move_direction == 'down') shift_map_y = -game.distance_per_smooth_move * game.map_scale;
-	if(game.smooth_move_direction == 'left') shift_map_x = game.distance_per_smooth_move * game.map_scale;
-	if(game.smooth_move_direction == 'right') shift_map_x = -game.distance_per_smooth_move * game.map_scale;
+	if(game.smooth_move_direction == 'up') shift_map_y = game.smooth_move_distance * game.map_scale;
+	if(game.smooth_move_direction == 'down') shift_map_y = -game.smooth_move_distance * game.map_scale;
+	if(game.smooth_move_direction == 'left') shift_map_x = game.smooth_move_distance * game.map_scale;
+	if(game.smooth_move_direction == 'right') shift_map_x = -game.smooth_move_distance * game.map_scale;
 	
 	game.buffer_display_context.drawImage(game.canvas_wall_and_floor_graphical, 0, 0, 544, 544, shift_map_x, shift_map_y, 544, 544);
 	game.buffer_display_context.drawImage(game.canvas_object_bg, 0, 0, 544, 544, shift_map_x, shift_map_y, 544, 544);
@@ -57,7 +57,7 @@ GameController.draw = function(skipSmoothMove)
 			if(game.smooth_move_distance == 0 && game.player_moving_direction() != 0)
 			{
 				game.smooth_move_direction = game.player_moving_direction();
-				game.smooth_move_interval = setInterval(function(){requestAnimationFrame(game.SmoothMove);}, 60);
+				game.smooth_move_interval = setInterval(function(){requestAnimationFrame(game.SmoothMove);}, 40);
 				return false;
 			}
 			else if(game.smooth_move_interval != 0)
