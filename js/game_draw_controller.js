@@ -27,6 +27,7 @@ GameController.SmoothMove = function()
 	}
 	var shift_map_x = 0;
 	var shift_map_y = 0;
+	/*
 	if(game.smooth_move_direction == 'up') shift_map_y = game.smooth_move_distance * game.map_scale;
 	if(game.smooth_move_direction == 'down') shift_map_y = -game.smooth_move_distance * game.map_scale;
 	if(game.smooth_move_direction == 'left') shift_map_x = game.smooth_move_distance * game.map_scale;
@@ -40,6 +41,22 @@ GameController.SmoothMove = function()
 	game.buffer_display_context.drawImage(game.canvas_object_fg, 0, 0, 544, 544, shift_map_x, shift_map_y, 544, 544);
 	game.buffer_display_context.drawImage(game.canvas_facade, 0, 0, 544, 544, shift_map_x, shift_map_y, 544, 544);
 	game.buffer_display_context.drawImage(game.canvas_vision_fog, 0, 0, 544, 544, shift_map_x, shift_map_y, 544, 544);
+	*/
+	
+	if(game.smooth_move_direction == 'up') shift_map_y = -game.smooth_move_distance * game.map_scale;
+	if(game.smooth_move_direction == 'down') shift_map_y = game.smooth_move_distance * game.map_scale;
+	if(game.smooth_move_direction == 'left') shift_map_x = -game.smooth_move_distance * game.map_scale;
+	if(game.smooth_move_direction == 'right') shift_map_x = game.smooth_move_distance * game.map_scale;
+	
+	game.buffer_display_context.drawImage(game.canvas_wall_and_floor_graphical, shift_map_x, shift_map_y, 544, 544, 0, 0, 544, 544);
+	game.buffer_display_context.drawImage(game.canvas_object_bg, shift_map_x, shift_map_y, 544, 544, 0, 0, 544, 544);
+	game.buffer_display_context.drawImage(game.canvas_event_object, shift_map_x, shift_map_y, 544, 544, 0, 0, 544, 544);
+	game.DrawCharacters(shift_map_x, shift_map_y);
+	game.buffer_display_context.drawImage(game.canvas_character, shift_map_x, shift_map_y, 544, 544, 0, 0, 544, 544);
+	game.buffer_display_context.drawImage(game.canvas_object_fg, shift_map_x, shift_map_y, 544, 544, 0, 0, 544, 544);
+	game.buffer_display_context.drawImage(game.canvas_facade, shift_map_x, shift_map_y, 544, 544, 0, 0, 544, 544);
+	game.buffer_display_context.drawImage(game.canvas_vision_fog, shift_map_x, shift_map_y, 544, 544, 0, 0, 544, 544);
+	
 	//buffer to screen
 	game.display_context.drawImage(game.buffer_display_canvas, 0, 0, 544, 544);
 }
@@ -57,7 +74,7 @@ GameController.draw = function(skipSmoothMove)
 			if(game.smooth_move_distance == 0 && game.player_moving_direction() != 0)
 			{
 				game.smooth_move_direction = game.player_moving_direction();
-				game.smooth_move_interval = setInterval(function(){requestAnimationFrame(game.SmoothMove);}, 40);
+				game.smooth_move_interval = setInterval(function(){requestAnimationFrame(game.SmoothMove);}, game.smooth_move_interval_time);
 				return false;
 			}
 			else if(game.smooth_move_interval != 0)
@@ -1008,8 +1025,9 @@ GameController.DrawCharacters = function(shift_map_x, shift_map_y)
 			}
 			shift_x_scaled = Math.round(shift_char_x * scale_x * (1/(game.scale_sprite * this_sprite_scale)));
 			shift_y_scaled = Math.round(shift_char_y * (1/(game.scale_sprite * this_sprite_scale)));
-			SpritePxX += shift_x_scaled;
-			SpritePxY += shift_y_scaled;
+			//FIX THIS
+			//SpritePxX += shift_x_scaled*-1;
+			//SpritePxY += shift_y_scaled*-1;
 		}
 		
 		if(game.characters[i].highlight)
