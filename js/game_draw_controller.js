@@ -990,12 +990,14 @@ GameController.DrawCharacters = function(shift_map_x, shift_map_y)
 		if(smooth_move_draw)
 		{
 			shift_char_x = shift_char_y = 0;
+			
+			//if player
 			if(i == game.active_player_index)
 			{
-				//if player or character moving in same direction as player
 				shift_char_x = shift_map_x*-1;
 				shift_char_y = shift_map_y*-1;
 			}
+			//if not player
 			else
 			{
 				//moved left
@@ -1011,8 +1013,11 @@ GameController.DrawCharacters = function(shift_map_x, shift_map_y)
 				else if(shift_map_y < 0)
 					shift_char_y = t;
 					
-				if(game.characters[i].direction != 0)
+				if(game.characters[i].direction != 0) // game.characters[game.active_player_index].direction
 				{
+					//inverse of smooth move distance since sprite has already been moved 1 tile
+					//num tilesize - current smoth move distance
+					/*
 					if(game.characters[i].direction == 'left')
 						shift_char_x += game.smooth_move_distance * game.map_scale;
 					else if(game.characters[i].direction == 'right')
@@ -1021,13 +1026,24 @@ GameController.DrawCharacters = function(shift_map_x, shift_map_y)
 						shift_char_y += game.smooth_move_distance * game.map_scale;
 					else if(game.characters[i].direction == 'down')
 						shift_char_y -= game.smooth_move_distance * game.map_scale;
+					*/
+					//had to switch all this for monster movement in smooth_move
+					var inverse_smooth_move_distance = 32 - game.smooth_move_distance;
+					if(game.characters[i].direction == 'left')
+						shift_char_x -= inverse_smooth_move_distance * game.map_scale;
+					else if(game.characters[i].direction == 'right')
+						shift_char_x += inverse_smooth_move_distance * game.map_scale;
+					else if(game.characters[i].direction == 'up')
+						shift_char_y -= inverse_smooth_move_distance * game.map_scale;
+					else if(game.characters[i].direction == 'down')
+						shift_char_y += inverse_smooth_move_distance * game.map_scale;
 				}
 			}
 			shift_x_scaled = Math.round(shift_char_x * scale_x * (1/(game.scale_sprite * this_sprite_scale)));
 			shift_y_scaled = Math.round(shift_char_y * (1/(game.scale_sprite * this_sprite_scale)));
 			//FIX THIS
-			//SpritePxX += shift_x_scaled*-1;
-			//SpritePxY += shift_y_scaled*-1;
+			SpritePxX += shift_x_scaled*-1;
+			SpritePxY += shift_y_scaled*-1;
 		}
 		
 		if(game.characters[i].highlight)
