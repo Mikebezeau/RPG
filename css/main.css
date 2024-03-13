@@ -63,7 +63,7 @@ body{
 	padding-bottom: 0;
 	padding-left: 0;
 	background-color: #333;
-	
+	touch-action: manipulation;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
